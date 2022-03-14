@@ -18,7 +18,6 @@ import {NavLink} from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import MyAvatar from "../../assets/images/avatar.png";
 import "../../assets/css/Header.css";
-import ThemeToggle3 from "../../features/theme-toggle/ThemeToggle3";
 import {ThemeToggle} from "../../features/theme-toggle/ThemeToggle";
 
 const pages = [
@@ -74,6 +73,7 @@ export const Header = () => {
             <Container maxWidth='xl' id='HeaderContainer'>
                 <Toolbar disableGutters>
                     <Typography
+                        className='site-name'
                         variant='h4'
                         noWrap
                         component='h4'
@@ -117,7 +117,7 @@ export const Header = () => {
                         {pages.map((page, index) => (
                             <NavLink to={page.path} key={"navLink-" + index}>
                                 <Button onClick={handleCloseNavMenu}
-                                        sx={{my: 2, color:theme.palette.text.primary}}>
+                                        sx={{my: 2, color: theme.palette.text.primary}}>
                                     {page.name}
                                 </Button>
                             </NavLink>

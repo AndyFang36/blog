@@ -18,17 +18,15 @@ export const Main = () => {
                  color: theme.palette.text.primary,
                  backgroundColor: theme.palette.background.default
              }}>
-            <Container id='MainContainer'>
-                <Routes>
-                    <Route path='/' element={<HomePage/>}/>
-                    <Route path='/tech' element={<TechnologyPage/>}/>
-                    <Route path='/life' element={<LifePage/>}/>
-                    <Route path='/utility' element={<UtilityPage/>}/>
-                    <Route path='/reading' element={<ReadingPage/>}/>
-                    <Route path='/gallery' element={<GalleryPage/>}/>
-                    <Route path='/about' element={<AboutPage/>}/>
-                </Routes>
-            </Container>
+            <Routes>
+                <Route path='/' element={<HomePage/>}/>
+                <Route path='/tech' element={<TechnologyPage/>}/>
+                <Route path='/life' element={<LifePage/>}/>
+                <Route path='/utility' element={<UtilityPage/>}/>
+                <Route path='/reading' element={<ReadingPage/>}/>
+                <Route path='/gallery' element={<GalleryPage/>}/>
+                <Route path='/about' element={<AboutPage/>}/>
+            </Routes>
         </Box>
     );
 };
