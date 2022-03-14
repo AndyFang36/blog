@@ -1,6 +1,14 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Andyの个人博客",
+  "version_name": "0.1.0",
+  "name": "Andyの个人博客网站",
+  "author": "Andy Fang",
+  "developer": {
+    "name": "Andy Fang",
+    "url": "https://www.github.com/AndyFang36"
+  },
+  "description": "Andy Fang's personal blog site to share my life.",
+  "homepage_url": "https://www.andyfang.info",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,9 +16,14 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo128.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "128x128"
+    },
+    {
+      "src": "logo256.png",
+      "type": "image/png",
+      "sizes": "256x256"
     },
     {
       "src": "logo512.png",
@@ -18,8 +31,8 @@
       "sizes": "512x512"
     }
   ],
+  "offline_enabled": true,
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "manifest_version": 2
 }
