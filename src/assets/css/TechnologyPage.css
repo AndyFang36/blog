@@ -1,0 +1,13 @@
+/***************************************************** ----- **********************************************************/
+#TechnologyPage{
+    border: thin solid green;
+    padding: 1rem 0;
+}
+
+#TechnologyPage .category-menu{
+    border: thin dashed red;
+}
+
+#TechnologyPage .content{
+    border: thin dashed deepskyblue;
+}
