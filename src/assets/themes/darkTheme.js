@@ -22,7 +22,7 @@ export const darkTheme: ThemeOptions = {
             secondary: "#707070",
             paper: "#494545",
         },
-        primary: `#1565c0`,
+        primary: `#7b582d`,
         secondary: `#7b1fa2`,
         error: `#c62828`,
         warning: `#e65100`,

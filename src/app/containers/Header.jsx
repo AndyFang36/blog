@@ -109,8 +109,7 @@ export const Header = () => {
               ))}
             </Menu>
           </Box>
-          <Typography variant="h6" noWrap component="h6"
-                      sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
+          <Typography variant="h6" noWrap component="h6" sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
             <Box component="img" src={Logo} alt="Logo"/>Andyの博客
           </Typography>
           <Box component="nav" sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
@@ -123,8 +122,8 @@ export const Header = () => {
               </NavLink>
             ))}
           </Box>
-          <ThemeToggle/>
           <Box sx={{flexGrow: 0}}>
+            <ThemeToggle/>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
                 <Avatar alt="Andy Fang" src={MyAvatar}/>
