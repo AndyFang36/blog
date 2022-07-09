@@ -6,10 +6,10 @@
     font-weight: 100 900;
     font-stretch: 75% 125%;
     src: local("Source Han Sans"),
-    url("../../assets/fonts/source-han-sans/SourceHanSans-VF.otf") format("opentype-variations"),
-    url("../../assets/fonts/source-han-sans/SourceHanSans-VF.ttf") format("truetype-variations"),
-    url("../../assets/fonts/source-han-sans/SourceHanSans-VF.otf.woff2") format("woff2-variations"),
-    url("../../assets/fonts/source-han-sans/SourceHanSans-VF.ttf.woff2") format("woff2-variations");
+    url("../fonts/source-han-sans/SourceHanSans-VF.otf") format("opentype-variations"),
+    url("../fonts/source-han-sans/SourceHanSans-VF.ttf") format("truetype-variations"),
+    url("../fonts/source-han-sans/SourceHanSans-VF.otf.woff2") format("woff2-variations"),
+    url("../fonts/source-han-sans/SourceHanSans-VF.ttf.woff2") format("woff2-variations");
 }
 
 @font-face {
@@ -17,9 +17,9 @@
     font-weight: 300 700;
     font-stretch: 75% 125%;
     src: local("Fira Code"),
-    url("../../assets/fonts/fira-code/FiraCode-VF.ttf") format("truetype-variations"),
-    url("../../assets/fonts/fira-code/FiraCode-VF.woff") format("woff-variations"),
-    url("../../assets/fonts/fira-code/FiraCode-VF.woff2") format("woff2-variations");
+    url("../fonts/fira-code/FiraCode-VF.ttf") format("truetype-variations"),
+    url("../fonts/fira-code/FiraCode-VF.woff") format("woff-variations"),
+    url("../fonts/fira-code/FiraCode-VF.woff2") format("woff2-variations");
 }
 
 @font-face {
@@ -27,7 +27,7 @@
     font-weight: normal;
     font-stretch: normal;
     src: local("Jokerman"),
-    url("../../assets/fonts/jokerman/Jokerman-Regular.ttf") format("truetype-variations");
+    url("../fonts/jokerman/Jokerman-Regular.ttf") format("truetype-variations");
 }
 
 /***************************************************** Others **********************************************************/

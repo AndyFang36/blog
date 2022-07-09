@@ -10,23 +10,23 @@ import {TechnologyPage} from "../pages/TechnologyPage";
 import {UtilityPage} from "../pages/UtilityPage";
 
 export const Main = () => {
-    const theme = useSelector(state => state["themeToggle"].theme);
+  const theme = useSelector(state => state["themeToggle"]["theme"]);
 
-    return (
-        <Box component='main' id='MainPage'
-             sx={{
-                 color: theme.palette.text.primary,
-                 backgroundColor: theme.palette.background.default
-             }}>
-            <Routes>
-                <Route path='/' element={<HomePage/>}/>
-                <Route path='/tech' element={<TechnologyPage/>}/>
-                <Route path='/life' element={<LifePage/>}/>
-                <Route path='/utility' element={<UtilityPage/>}/>
-                <Route path='/reading' element={<ReadingPage/>}/>
-                <Route path='/gallery' element={<GalleryPage/>}/>
-                <Route path='/about' element={<AboutPage/>}/>
-            </Routes>
-        </Box>
-    );
+  return (
+    <Box component="main" id="MainContainer"
+         sx={{
+           color: theme.palette.text.primary,
+           backgroundColor: theme.palette.background.default,
+         }}>
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/tech" element={<TechnologyPage/>}/>
+        <Route path="/life" element={<LifePage/>}/>
+        <Route path="/utility" element={<UtilityPage/>}/>
+        <Route path="/reading" element={<ReadingPage/>}/>
+        <Route path="/gallery" element={<GalleryPage/>}/>
+        <Route path="/about" element={<AboutPage/>}/>
+      </Routes>
+    </Box>
+  );
 };

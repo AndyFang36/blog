@@ -2,7 +2,7 @@ import {Grain, Home, Whatshot} from "@mui/icons-material";
 import {Box, Breadcrumbs, Container, Divider, Grid, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import {CategoryMenu} from "../../common/components/CategoryMenu";
-import "../../assets/css/TechnologyPage.css";
+import "../../assets/styles/TechnologyPage.css";
 
 export const TechnologyPage = () => {
     return (

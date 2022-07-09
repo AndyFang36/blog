@@ -5,3 +5,7 @@
 hr {
     margin: 1rem 0 !important;
 }
+
+p {
+    text-indent: 2em;
+}

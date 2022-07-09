@@ -1,5 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
-import themeToggleReducer from "../features/theme-toggle/themeToggleSlice";
+import themeToggleReducer from "../features/theme-toggle/themeStateSlice";
 import loginStateReducer from "../features/loginStateSlice";
 
 export default configureStore({
@@ -7,4 +7,5 @@ export default configureStore({
         themeToggle: themeToggleReducer,
         loginState: loginStateReducer,
     },
+    middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false}),
 });
