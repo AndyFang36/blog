@@ -79,7 +79,7 @@ export const Header = () => {
             component="h4"
             sx={{mr: 2, display: {xs: "none", md: "flex"}}}
           >
-            <Box component="img" src={Logo} alt="Logo"/>Andyの博客
+            <img src={Logo} alt="Logo" style={{verticalAlign: "text-bottom"}}/>ndyの博客
           </Typography>
           <Box sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
             <IconButton
@@ -115,8 +115,7 @@ export const Header = () => {
           <Box component="nav" sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
             {pages.map((page, index) => (
               <NavLink to={page.path} key={"navLink-" + index}>
-                <Button onClick={handleCloseNavMenu}
-                        sx={{my: 2, color: theme.palette.text.primary}}>
+                <Button onClick={handleCloseNavMenu} sx={{height: "100%", color: theme.palette.text.primary}}>
                   {page.name}
                 </Button>
               </NavLink>

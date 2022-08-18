@@ -1,5 +1,67 @@
+@charset "UTF-8";
+
 /***************************************************** ----- **********************************************************/
-#HomePage .banner-swiper img{
+#HomePage .banner-swiper img {
     width: 100%;
     height: auto;
+}
+
+#HomeSwiper [class^="swiper-button"] {
+    color: white;
+}
+
+#HomeSwiper [class~="swiper-pagination-bullet-active"] {
+    color: inherit;
+    background-color: white;
+}
+
+#HomeSwiper .swiper-slide > .MuiBox-root {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vw;
+    background-size: cover;
+}
+
+#HomeSwiper .swiper-slide > .MuiBox-root > h3 {
+    color: rgba(255, 255, 255, 85%);
+    /*opacity: 80%;*/
+}
+
+#Logos button {
+    color: inherit;
+}
+
+#Logos svg {
+    font-size: 2em;
+    transition: all 0.5s;
+}
+
+#Logos svg:hover {
+    transform: scale(150%);
+}
+
+#Logos #React:hover {
+    color: skyblue;
+}
+
+#Logos #ReactRouter:hover {
+    color: red;
+}
+
+#Logos #Redux:hover {
+    color: violet;
+}
+
+#Logos #SpringBoot:hover {
+    color: limegreen;
+}
+
+#Logos #Swiper:hover {
+    color: blue;
+}
+
+#Logos #Jetbrains:hover {
+    color: black;
 }

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+#ReadingPage #BackgroundImg {
+    position: relative;
+    color: rgba(255, 255, 255, 0.85);
+
+}
+
+#ReadingPage #BackgroundImg .text{
+    padding-left: 10vw;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#ReadingPage #BackgroundImg p{
+    line-height: 1;
+    margin-bottom: 1rem;
+}

@@ -15,7 +15,13 @@ export const App = () => {
   refreshToTop();
 
   return (
-    <Box id="App" sx={{color: theme.palette.text.primary, backgroundColor: theme.palette.background.default}}>
+    <Box id="App"
+         sx={{
+           color: theme.palette.text.primary,
+           backgroundImage: theme.mode === "light" ?
+             "linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)" : "linear-gradient(to top right, #434343 0%, black 100%)",
+         }}
+    >
       <CssBaseline/>
       <BrowserRouter>
         <Header/>
@@ -25,7 +31,7 @@ export const App = () => {
       <ScrollToTop
         smooth
         component={<ArrowUpward fontSize="large" sx={{color: "white"}}/>}
-        style={{backgroundColor: "orange", width: "3rem", height: "3rem"}}
+        style={{backgroundColor: theme.palette.primary, width: "3rem", height: "3rem"}}
       />
     </Box>
   );
