@@ -1,18 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.a3d97375.css",
-    "main.js": "/static/js/main.eec853f2.js",
-    "static/media/avatar.png": "/static/media/avatar.7220dbf1cd25ca4b3183.png",
-    "static/media/home-2.jpg": "/static/media/home-2.adc5aa933cf74fa14ed6.jpg",
-    "static/media/home-1.jpg": "/static/media/home-1.af72b6daa6cd0733c582.jpg",
-    "static/media/home-3.jpg": "/static/media/home-3.065e9c3a68a7775cdeb1.jpg",
-    "index.html": "/index.html",
-    "static/media/logo.svg": "/static/media/logo.3045d677d4e009d3151dad3b8ea64374.svg",
-    "main.a3d97375.css.map": "/static/css/main.a3d97375.css.map",
-    "main.eec853f2.js.map": "/static/js/main.eec853f2.js.map"
+    "main.css": "https://andyfang36.github.io/blog/static/css/main.31a572aa.css",
+    "main.js": "https://andyfang36.github.io/blog/static/js/main.181ab81f.js",
+    "static/media/SourceHanSans-VF.ttf": "https://andyfang36.github.io/blog/static/media/SourceHanSans-VF.841353f584f522be668f.ttf",
+    "static/media/SourceHanSans-VF.otf": "https://andyfang36.github.io/blog/static/media/SourceHanSans-VF.cda572dad9b8a904757d.otf",
+    "static/media/SourceHanSans-VF.ttf.woff2": "https://andyfang36.github.io/blog/static/media/SourceHanSans-VF.ttf.d7601398d388af773ca3.woff2",
+    "static/media/SourceHanSans-VF.otf.woff2": "https://andyfang36.github.io/blog/static/media/SourceHanSans-VF.otf.7e8d13ee0248d9676fa5.woff2",
+    "static/media/mountain.jpg": "https://andyfang36.github.io/blog/static/media/mountain.b79db28030622b603904.jpg",
+    "static/media/banner-3.png": "https://andyfang36.github.io/blog/static/media/banner-3.bc6d3ebf113836ad2a4e.png",
+    "static/media/banner-1.png": "https://andyfang36.github.io/blog/static/media/banner-1.f360d7d8288e33db6a3a.png",
+    "static/media/banner-2.png": "https://andyfang36.github.io/blog/static/media/banner-2.12068db862d64a32dbf4.png",
+    "static/media/welcome.mp4": "https://andyfang36.github.io/blog/static/media/welcome.3e1178e995ce99f2ee0f.mp4",
+    "static/media/banner-4.png": "https://andyfang36.github.io/blog/static/media/banner-4.ea4421bbbc2537147e6b.png",
+    "static/media/poster.jpg": "https://andyfang36.github.io/blog/static/media/poster.9fba002cb6b86e29cbac.jpg",
+    "static/media/reading.png": "https://andyfang36.github.io/blog/static/media/reading.3bc939d47d37cf41ca76.png",
+    "static/media/avatar.png": "https://andyfang36.github.io/blog/static/media/avatar.dedb8d84d2971e181930.png",
+    "static/media/FiraCode-VF.ttf": "https://andyfang36.github.io/blog/static/media/FiraCode-VF.7988c3f22712d18f39aa.ttf",
+    "static/media/avatar-1.png": "https://andyfang36.github.io/blog/static/media/avatar-1.7220dbf1cd25ca4b3183.png",
+    "static/media/FiraCode-VF.woff": "https://andyfang36.github.io/blog/static/media/FiraCode-VF.b55b39ac4c8e1fe04870.woff",
+    "static/media/FiraCode-VF.woff2": "https://andyfang36.github.io/blog/static/media/FiraCode-VF.145e4ac7976fbd199e74.woff2",
+    "static/media/Jokerman-Regular.ttf": "https://andyfang36.github.io/blog/static/media/Jokerman-Regular.edec23402db3b372976c.ttf",
+    "index.html": "https://andyfang36.github.io/blog/index.html",
+    "static/media/logo.svg": "https://andyfang36.github.io/blog/static/media/logo.3045d677d4e009d3151dad3b8ea64374.svg",
+    "main.31a572aa.css.map": "https://andyfang36.github.io/blog/static/css/main.31a572aa.css.map",
+    "main.181ab81f.js.map": "https://andyfang36.github.io/blog/static/js/main.181ab81f.js.map"
   },
   "entrypoints": [
-    "static/css/main.a3d97375.css",
-    "static/js/main.eec853f2.js"
+    "static/css/main.31a572aa.css",
+    "static/js/main.181ab81f.js"
   ]
 }
