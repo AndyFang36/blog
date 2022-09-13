@@ -1,0 +1,38 @@
+{
+  "short_name": "Andyの个人博客",
+  "version_name": "0.1.0",
+  "name": "Andyの个人博客网站",
+  "author": "Andy Fang",
+  "developer": {
+    "name": "Andy Fang",
+    "url": "https://www.github.com/AndyFang36"
+  },
+  "description": "Andy Fang's personal blog site to share my life.",
+  "homepage_url": "https://www.andyfang.info",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "logo256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "offline_enabled": true,
+  "start_url": ".",
+  "display": "standalone",
+  "manifest_version": 2
+}

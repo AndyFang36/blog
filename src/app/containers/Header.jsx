@@ -16,7 +16,7 @@ import {Menu as MenuIcon} from "@mui/icons-material";
 import {useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
-import MyAvatar from "../../assets/images/avatar.png";
+import MyAvatar from "../../assets/images/avatars/avatar-1.png";
 import "../../assets/styles/Header.css";
 import {ThemeToggle} from "../../features/theme-toggle/ThemeToggle";
 
