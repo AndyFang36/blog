@@ -7,6 +7,7 @@ export const Clock = () => {
 
   // initialize the clock in a self-invoking function
   useEffect(() => {
+    const abortController = new AbortController();
     // use requestAnimationFrame for smoothness (shimmed with setTimeout fallback)
     const requestAnimFrame = (() => (
       window.requestAnimationFrame ||
@@ -33,6 +34,7 @@ export const Clock = () => {
       requestAnimFrame(loop);
       paint();
     })();
+    return () => abortController.abort();
   }, []);
 
   return (

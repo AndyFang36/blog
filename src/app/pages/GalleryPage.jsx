@@ -22,7 +22,7 @@ export const GalleryPage = () => {
         </video>
         <Typography variant="h1" align="center">Welcome To My Gallery!</Typography>
       </Box>
-      <Container id="FirstSwiper" maxWidth={false} disableGutters sx={{height: {"md": "700px", "xl": "940px"}}}>
+      {/*<Container id="FirstSwiper" maxWidth={false} disableGutters sx={{height: {"md": "700px", "xl": "940px"}}}>
         <Swiper
           className="main-swiper"
           style={{"--swiper-navigation-color": "#fff", "--swiper-pagination-color": "#fff"}}
@@ -104,7 +104,7 @@ export const GalleryPage = () => {
             <img src="https://swiperjs.com/demos/images/nature-10.jpg"/>
           </SwiperSlide>
         </Swiper>
-      </Container>
+      </Container>*/}
     </Box>
   );
 };

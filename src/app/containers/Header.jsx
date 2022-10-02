@@ -6,7 +6,7 @@ import {
   Container,
   IconButton,
   Menu,
-  MenuItem,
+  MenuItem, Stack,
   Toolbar,
   Tooltip,
   Typography,
@@ -33,15 +33,15 @@ const settings = ["个人资料", "我的账户", "后台管理", "退出登录"
 
 export const Header = () => {
   const theme = useSelector(state => state["themeToggle"]["theme"]);
+  const [scrolled, setScrolled] = useState(false);
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const [elevation, setElevation] = useState(0);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-      scrollTop > 0 ? setElevation(3) : setElevation(0);
+      scrollTop > 0 ? setScrolled(true) : setScrolled(false);
     });
   });
 
@@ -64,10 +64,11 @@ export const Header = () => {
     <AppBar
       id="Header"
       position="sticky"
-      elevation={elevation}
+      elevation={scrolled ? 3 : 0}
       sx={{
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.primary,
+        backgroundColor: "rgba(255,172,73,0.6)",
+        backdropFilter: scrolled ? "blur(3px)" : "none"
       }}
     >
       <Container maxWidth={false} id="HeaderContainer">
@@ -109,10 +110,11 @@ export const Header = () => {
               ))}
             </Menu>
           </Box>
+          {/* desktop */}
           <Typography variant="h6" noWrap component="h6" sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
             <Box component="img" src={Logo} alt="Logo"/>Andyの博客
           </Typography>
-          <Box component="nav" sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
+          <Stack direction="row" spacing={2} component="nav" sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
             {pages.map((page, index) => (
               <NavLink to={page.path} key={"navLink-" + index}>
                 <Button onClick={handleCloseNavMenu} sx={{height: "100%", color: theme.palette.text.primary}}>
@@ -120,7 +122,7 @@ export const Header = () => {
                 </Button>
               </NavLink>
             ))}
-          </Box>
+          </Stack>
           <Box sx={{flexGrow: 0}}>
             <ThemeToggle/>
             <Tooltip title="Open settings">

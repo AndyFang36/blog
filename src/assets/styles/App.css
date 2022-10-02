@@ -12,3 +12,9 @@ html{
     margin: 0.5rem 0;
     text-indent: 2em;
 }
+
+code {
+    padding: 2px;
+    background-color: #efefef;
+    border-radius: 0.25rem;
+}
