@@ -1,5 +1,8 @@
-import {FlexboxLayout} from "./FlexboxLayout";
-import {GridLayout} from "./GridLayout";
-import {TableLayout} from "./TableLayout";
+import {lazy} from "react";
 
-export {FlexboxLayout, GridLayout, TableLayout}
+const
+  FlexboxLayout = lazy(() => import("./FlexboxLayout")),
+  GridLayout = lazy(() => import("./GridLayout")),
+  TableLayout = lazy(() => import("./TableLayout"));
+
+export {FlexboxLayout, GridLayout, TableLayout};

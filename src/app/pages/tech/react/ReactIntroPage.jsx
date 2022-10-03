@@ -1,6 +1,6 @@
 import {Box, Typography} from "@mui/material";
 
-export default function IntroPage() {
+export default function ReactIntroPage() {
   return(
     <Box id="IntroPage">
       <Typography variant="h1">React</Typography>

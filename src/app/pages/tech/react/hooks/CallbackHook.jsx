@@ -97,7 +97,7 @@ export default function CallbackHook() {
   return (
     <Box id="CallbackHook">
       <Typography paragraph>
-        usecallback是将父组件传给子组件的方法给缓存下来，只有当 usecallback中的第二个参数状态变化时，子组件才重新渲染.<br/>
+        useCallback是将父组件传给子组件的方法给缓存下来，只有当 usecallback中的第二个参数状态变化时，子组件才重新渲染.<br/>
         Pass an inline callback and an array of dependencies. useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
       </Typography>
       <Divider sx={{mt: 1, mb: 2}}/>

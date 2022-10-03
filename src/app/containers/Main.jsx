@@ -1,18 +1,18 @@
 import {Box} from "@mui/material";
 import {Suspense} from "react";
 import {Route, Routes} from "react-router-dom";
-import {AboutPage} from "../pages/AboutPage";
 import {GalleryPage} from "../pages/GalleryPage";
-import {HomePage} from "../pages/HomePage";
+import {HomePage, AboutPage} from "../pages";
 import {LifePage} from "../pages/LifePage";
 import {ReadingPage} from "../pages/ReadingPage";
 import {TechnologyPage} from "../pages/tech/TechnologyPage";
 import {UtilityPage} from "../pages/utils/UtilityPage";
+import {LoadingPage} from "../pages/LoadingPage";
 
 export const Main = () => {
   return (
     <Box component="main" id="MainContainer">
-      <Suspense>
+      <Suspense fallback={<LoadingPage/>}>
         <Routes>
           <Route path="/" index element={<HomePage/>}/>
           <Route path="tech/*" element={<TechnologyPage/>}/>

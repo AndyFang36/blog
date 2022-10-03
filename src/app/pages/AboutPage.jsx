@@ -1,12 +1,12 @@
 import {Box, Container, Divider, Grid, Link as Anchor, Typography} from "@mui/material";
-import Avatar from "../../assets/images/avatars/avatar.png"
+import Avatar from "../../assets/images/avatars/avatar.png";
 
-export const AboutPage = () => {
+export default function AboutPage() {
   return (
     <Box id="AboutPage">
       <Container maxWidth="xl">
         <Typography variant="h2" align="center">About Me</Typography>
-        <Divider sx={{m:"0 auto 1rem auto"}}/>
+        <Divider sx={{m: "0 auto 1rem auto"}}/>
         <Grid container spacing={3}>
           <Grid item md={6}>
             <Typography variant="h4">Hi, I'm Andy Fang!<br/>So good to have you here. </Typography>

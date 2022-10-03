@@ -17,7 +17,7 @@ import "swiper/css/scrollbar";
 import "../../assets/styles/HomePage.css";
 
 /** Home Page, path: / */
-export const HomePage = () => {
+export default function HomePage() {
   return (
     <Box id="HomePage">
       <Container maxWidth={false} disableGutters id="HomeSwiper">

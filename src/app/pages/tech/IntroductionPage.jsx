@@ -1,8 +1,8 @@
 import {Box} from "@mui/material";
 
-export default function WelcomePage() {
+export default function IntroductionPage() {
   return(
-    <Box id="WelcomePage">
+    <Box id="IntroductionPage">
       Welcome!
     </Box>
   )

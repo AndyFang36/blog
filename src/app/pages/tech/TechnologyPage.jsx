@@ -1,16 +1,21 @@
 import {Grain, Home, ThumbUp as ThumbUpIcon, Whatshot} from "@mui/icons-material";
 import {Box, Breadcrumbs, Card, CardActions, CardContent, CardHeader, Container, Divider, Grid, IconButton, Typography} from "@mui/material";
 import {Link, Outlet, Route, Routes} from "react-router-dom";
-import {CategoryMenu} from "../../../common/components/CategoryMenu";
+import {Sidebar} from "../../containers/Sidebar";
 import "../../../assets/styles/TechnologyPage.css";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState, Suspense} from "react";
 import {Clock} from "../../../common/components/clock/Clock";
 import {useSelector} from "react-redux";
-import WelcomePage from "./WelcomePage";
-import IntroPage from "./react/IntroPage";
-import {CallbackHook} from "./react/hooks";
+import IntroductionPage from "./IntroductionPage";
+import ReactIntroPage from "./react/ReactIntroPage";
+import {CallbackHook, MemoHook} from "./react/hooks";
 import * as echarts from "echarts";
 import axios, {Axios} from "axios";
+import CSSIntroPage from "./css/CSSIntroPage";
+import HTMLIntroPage from "./html/HTMLIntroPage";
+import JSIntroPage from "./js/JSIntroPage";
+import ArticleLoading from "./ArticleLoading";
+import {FlexboxLayout, GridLayout, TableLayout} from "./css/layouts";
 
 export const TechnologyPage = () => {
   const theme = useSelector(state => state["themeToggle"]["theme"]);
@@ -57,7 +62,7 @@ export const TechnologyPage = () => {
             splitNumber: 5,
             lineStyle: {
               width: 2,
-              color: "#999"
+              color: "#999999"
             }
           },
           splitLine: {
@@ -88,7 +93,7 @@ export const TechnologyPage = () => {
             fontSize: 60,
             fontWeight: "bolder",
             formatter: "{value} °C",
-            color: "auto"
+            color: "inherit"
           },
           data: [
             {
@@ -136,23 +141,23 @@ export const TechnologyPage = () => {
         }
       ]
     });
-    axios.get("http://wthrcdn.etouch.cn/weather_mini?city=上海").then(response => {
+    /*axios.get("http://wthrcdn.etouch.cn/weather_mini?city=上海").then(response => {
       const weather = JSON.parse(response.data["forcaset"][0]);
       const low = (weather["low"].replace(/\D/g, "").trim() + "°").trim();
       const high = (weather["high"].replace(/\D/g, "").trim() + "°C").trim();
       const wText = weather["type"] + low + "~" + high;
-      console.log(wText)
-    });
+      console.log(wText);
+    });*/
   }, []);
 
   return (
     <Box id="TechnologyPage">
       <Container maxWidth={false}>
         <Grid container spacing={3} position="relative" columns={16}>
-          <Grid item xs={0} md={3} lg={2} xl={3}>
-            <CategoryMenu/>
+          <Grid item xs={0} md={3} lg={2} xl={3} sx={{display: {xs: "none", md: "flex"}}}>
+            <Sidebar/>
           </Grid>
-          <Grid item xs={4} md={8} lg={8} xl={9}>
+          <Grid item xs={16} md={8} lg={8} xl={9}>
             <Card style={styles.card}>
               <CardHeader/>
               <CardContent>
@@ -182,23 +187,39 @@ export const TechnologyPage = () => {
                 </Breadcrumbs>
                 <Divider/>
                 <Box className="article" p={1.5}>
-                  <Routes>
-                    <Route path="welcome" index element={<WelcomePage/>}/>
-                    <Route path="html/*" element={<WelcomePage/>}/>
-                    <Route path="css/*" element={<WelcomePage/>}/>
-                    <Route path="javascript/*" element={<WelcomePage/>}/>
-                    <Route path="react/*" element={<Outlet/>}>
-                      <Route path="intro" index element={<IntroPage/>}/>
-                      <Route path="hooks/*" element={<Outlet/>}>
-                        <Route path="useCallback" element={<CallbackHook/>}/>
-                        <Route path="useEffect" element={<CallbackHook/>}/>
-                        <Route path="useMemo" element={<CallbackHook/>}/>
+                  <Suspense fallback={<ArticleLoading/>}>
+                    <Routes>
+                      <Route index element={<IntroductionPage/>}/>
+                      <Route path="html/*" element={<Outlet/>}>
+                        <Route index element={<HTMLIntroPage/>}/>
                       </Route>
-                    </Route>
-                  </Routes>
+                      <Route path="css/*" element={<Outlet/>}>
+                        <Route index element={<CSSIntroPage/>}/>
+                        <Route path="layout/*" element={<Outlet/>}>
+                          <Route path="flexbox" element={<FlexboxLayout/>}/>
+                          <Route path="grid" element={<GridLayout/>}/>
+                          <Route path="table" element={<TableLayout/>}/>
+                        </Route>
+                      </Route>
+                      <Route path="javascript/*" element={<Outlet/>}>
+                        <Route index element={<JSIntroPage/>}/>
+                      </Route>
+                      <Route path="react/*" element={<Outlet/>}>
+                        <Route path="intro" index element={<ReactIntroPage/>}/>
+                        <Route path="hooks/*" element={<Outlet/>}>
+                          <Route path="useCallback" element={<CallbackHook/>}/>
+                          <Route path="useEffect" element={<CallbackHook/>}/>
+                          <Route path="useMemo" element={<MemoHook/>}/>
+                        </Route>
+                      </Route>
+                    </Routes>
+                  </Suspense>
                 </Box>
               </CardContent>
               <CardActions>
+                <IconButton><ThumbUpIcon/></IconButton>
+                <IconButton><ThumbUpIcon/></IconButton>
+                <IconButton><ThumbUpIcon/></IconButton>
                 <IconButton><ThumbUpIcon/></IconButton>
               </CardActions>
             </Card>

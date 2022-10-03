@@ -1,9 +1,9 @@
 import {Box} from "@mui/material";
 
-export const TableLayout = () => {
+export default function TableLayout() {
   return(
     <Box id="TableLayout">
-
+      table layout...
     </Box>
   )
 }

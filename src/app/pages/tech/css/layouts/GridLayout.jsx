@@ -1,9 +1,9 @@
 import {Box} from "@mui/material";
 
-export const GridLayout = () => {
+export default function GridLayout(){
   return(
     <Box id="GridLayout">
-
+      Grid...
     </Box>
   )
 }
