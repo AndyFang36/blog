@@ -1,6 +1,6 @@
 import {Drafts, EmojiEmotions, ExpandLess, ExpandMore, Handyman, Send, StarBorder, ViewQuilt, Webhook} from "@mui/icons-material";
 import {Card, CardContent, Collapse, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography} from "@mui/material";
-import {useState} from "react";
+import {Fragment, useState} from "react";
 import {Link, NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {FaHtml5, FaCss3Alt, FaReact} from "react-icons/fa";
@@ -15,6 +15,61 @@ const ListGroupLabel = ({label, ...others}) => {
     </>
   );
 };
+
+const list = [
+  {name: "Introduction", path: "/tech/", icon: <Send/>, sub: null},
+  {
+    name: "CSS", path: "/tech/css", icon: <FaCss3Alt/>, sub: [
+      {
+        name: "Layout", path: "/tech/css/layout", icon: <Send/>, sub: [
+          {name: "Flexbox", path: "/tech/css/layout/flexbox", icon: <Send/>},
+          {name: "Grid", path: "/tech/css/layout/grid", icon: <FaCss3Alt/>},
+          {name: "Table", path: "/tech/css/layout/table", icon: <FaCss3Alt/>},
+        ]
+      },
+      {
+        name: "Animation", path: "/tech/css/animation", icon: <Send/>, sub: [
+          {name: "xxx", path: "/tech/css/animation/xxx", icon: <Send/>}
+        ]
+      }
+    ]
+  },
+  {
+    name: "JavaScript", path: "/tech/javascript", icon: <DiJavascript/>, sub: [
+/*      {
+        name: "Core", path: "/tech/javascript/core", icon: <DiJavascript/>
+      },*/
+      {
+        name: "Web API", path: "/tech/javascript/api", icon: <DiJavascript/>, sub: [
+          {name: "Height Compare", path: "/tech/javascript/api/heightCompare", icon: <DiJavascript/>},
+        ]
+      }
+    ]
+  },
+  {
+    name: "React", path: "/tech/react", icon: <FaReact/>, sub: [
+      /*      {
+              name: "Core", path: "/tech/react/core", icon: <Webhook/>, sub: []
+            },
+            {
+              name: "Forms", path: "/tech/react/forms", icon: <Webhook/>, sub: []
+            },*/
+      {
+        name: "Hooks", path: "/tech/react/hooks", icon: <Webhook/>, sub: [
+          {isLabel: true, label: "Basic Hooks"},
+          {name: "useState", path: "/tech/react/hooks/useState", icon: <Webhook/>},
+          {name: "useEffect", path: "/tech/react/hooks/useEffect", icon: <Webhook/>},
+          {name: "useContext", path: "/tech/react/hooks/useContext", icon: <Webhook/>},
+          {isLabel: true, label: "Additional Hooks"},
+          {name: "useReducer", path: "/tech/react/hooks/useReducer", icon: <Webhook/>},
+          {name: "useMemo", path: "/tech/react/hooks/useMemo", icon: <Webhook/>},
+          {isLabel: true, label: "Library Hooks"},
+          {isLabel: true, label: "Custom Hooks"},
+        ]
+      },
+    ]
+  },
+];
 
 export const Sidebar = () => {
   const theme = useSelector(state => state["themeToggle"]["theme"]);
@@ -40,6 +95,7 @@ export const Sidebar = () => {
   return (
     <Card id="Sidebar" component="nav" style={style.sidebar}>
       <CardContent sx={{pr: 0, pl: 4}}>
+        {/*
         <List className="lv1">
           <ListItem>
             <NavLink to="/tech/">
@@ -49,7 +105,7 @@ export const Sidebar = () => {
               </ListItemButton>
             </NavLink>
           </ListItem>
-          {/* HTML */}
+           HTML
           <ListItem>
             <NavLink to="/tech/html">
               <ListItemButton>
@@ -96,7 +152,7 @@ export const Sidebar = () => {
               <ListItem></ListItem>
             </List>
           </Collapse>
-          {/* CSS */}
+           CSS
           <ListItem>
             <NavLink to="/tech/css">
               <ListItemButton onClick={toggleCollapse("css")}>
@@ -108,7 +164,7 @@ export const Sidebar = () => {
           </ListItem>
           <Collapse in={open["css"]} timeout="auto" unmountOnExit>
             <List className="sub lv2">
-              {/* Layout */}
+               Layout
               <ListItem className="sup">
                 <NavLink to="/tech/css/layout">
                   <ListItemButton onClick={toggleCollapse("css/layout")}>
@@ -138,7 +194,7 @@ export const Sidebar = () => {
                   </ListItem>
                 </List>
               </Collapse>
-              {/* Animation */}
+               Animation
               <ListItem></ListItem>
               <ListItem></ListItem>
               <ListItem></ListItem>
@@ -146,7 +202,7 @@ export const Sidebar = () => {
               <ListItem></ListItem>
             </List>
           </Collapse>
-          {/* JavaScript */}
+           JavaScript
           <ListItem className="sup">
             <NavLink to="/tech/javascript">
               <ListItemButton>
@@ -165,7 +221,7 @@ export const Sidebar = () => {
               <ListItem></ListItem>
             </List>
           </Collapse>
-          {/* React */}
+           React
           <ListItem className="sup">
             <ListItemButton onClick={toggleCollapse("react")}>
               <ListItemIcon><FaReact color="skyblue"/></ListItemIcon>
@@ -175,6 +231,7 @@ export const Sidebar = () => {
           </ListItem>
           <Collapse in={open["react"]} timeout="auto" unmountOnExit>
             <List className="sub lv2">
+               Hooks
               <ListItem className="sup">
                 <ListItemButton onClick={toggleCollapse("react/hooks")}>
                   <ListItemIcon><Webhook/></ListItemIcon>
@@ -326,23 +383,36 @@ export const Sidebar = () => {
                   </ListItem>
                 </List>
               </Collapse>
+               Forms
               <ListItem>
                 <ListItemButton>
                   <ListItemIcon><StarBorder/></ListItemIcon>
                   <ListItemText primary="Forms"/>
                 </ListItemButton>
               </ListItem>
-              <ListItem>
-                <Link to="/tech/react/hooks/use-memo">
-                  <ListItemButton>
-                    <ListItemIcon><StarBorder/></ListItemIcon>
-                    <ListItemText primary="useMemo"/>
-                  </ListItemButton>
-                </Link>
+               Core
+              <ListItem className="sup">
+                <ListItemButton onClick={toggleCollapse("react/core")}>
+                  <ListItemIcon><StarBorder/></ListItemIcon>
+                  <ListItemText primary="Core"/>
+                  {open["react/core"] ? <ExpandLess/> : <ExpandMore/>}
+                </ListItemButton>
               </ListItem>
+              <Collapse in={open["react/core"]} timeout="auto" unmountOnExit>
+                <List className="sub lv3">
+                  <ListItem>
+                    <NavLink to="/tech/react/core/state-updating">
+                      <ListItemButton>
+                        <ListItemIcon><Webhook/></ListItemIcon>
+                        <ListItemText primary="State Updating"/>
+                      </ListItemButton>
+                    </NavLink>
+                  </ListItem>
+                </List>
+              </Collapse>
             </List>
           </Collapse>
-          {/* Spring */}
+           Spring
           <ListItem>
             <Link to="/tech/spring">
               <ListItemButton>
@@ -351,7 +421,7 @@ export const Sidebar = () => {
               </ListItemButton>
             </Link>
           </ListItem>
-          {/* Others */}
+           Others
           <ListItem>
             <Link to="/tech/others">
               <ListItemButton>
@@ -360,6 +430,72 @@ export const Sidebar = () => {
               </ListItemButton>
             </Link>
           </ListItem>
+        </List>
+*/}
+        <List className="lv1">
+          {list.map((item, i) =>
+            item.sub === null ?
+              <ListItem key={item.name}>
+                <NavLink to={item.path}>
+                  <ListItemButton>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.name}/>
+                  </ListItemButton>
+                </NavLink>
+              </ListItem>
+              :
+              <Fragment key={item.name}>
+                <ListItem className="sup">
+                  <ListItemButton onClick={toggleCollapse(item.path)}>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.name}/>
+                    {open[item.path] ? <ExpandLess fontSize="large"/> : <ExpandMore fontSize="large"/>}
+                  </ListItemButton>
+                </ListItem>
+                <Collapse in={open[item.path]} timeout="auto" unmountOnExit>
+                  <List className="sub lv2">
+                    {item.sub.map((item2, j) =>
+                      item2.sub === null ?
+                        <ListItem key={item.name + "-" + item2.name}>
+                          <NavLink to={item2.path}>
+                            <ListItemButton>
+                              <ListItemIcon>{item2.icon}</ListItemIcon>
+                              <ListItemText primary={item2.name}/>
+                            </ListItemButton>
+                          </NavLink>
+                        </ListItem>
+                        :
+                        <Fragment key={item.name + "-" + item2.name}>
+                          <ListItem className="sup">
+                            <ListItemButton onClick={toggleCollapse(item2.path)}>
+                              <ListItemIcon>{item2.icon}</ListItemIcon>
+                              <ListItemText primary={item2.name}/>
+                              {open[item2.path] ? <ExpandLess/> : <ExpandMore/>}
+                            </ListItemButton>
+                          </ListItem>
+                          <Collapse in={open[item2.path]} timeout="auto" unmountOnExit>
+                            <List className="sub lv3">
+                              {item2.sub.map((item3, k) =>
+                                item3.isLabel ?
+                                  <ListGroupLabel label={item3.label} key={i + "-" + j + "-" + k}/>
+                                  :
+                                  <ListItem key={item.name + "-" + item2.name + "-" + item3.name}>
+                                    <NavLink to={item3.path}>
+                                      <ListItemButton>
+                                        <ListItemIcon>{item3.icon}</ListItemIcon>
+                                        <ListItemText primary={item3.name}/>
+                                      </ListItemButton>
+                                    </NavLink>
+                                  </ListItem>
+                              )}
+                            </List>
+                          </Collapse>
+                        </Fragment>
+                    )}
+                  </List>
+                </Collapse>
+              </Fragment>
+          )}
         </List>
       </CardContent>
     </Card>

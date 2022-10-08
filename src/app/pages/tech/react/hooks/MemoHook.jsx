@@ -68,6 +68,12 @@ export default function MemoHook() {
         <Demo1/>
         <Demo2/>
       </Stack>
+      <Typography variant="h6">
+        Use memoization with care:
+        While useMemo() can improve the performance of the component, you have to make sure to profile the component
+        with and without the hook. Only after that make the conclusion whether memoization worth it. When memoization
+        is used inappropriately, it could harm the performance.
+      </Typography>
     </Box>
   );
 };

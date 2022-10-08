@@ -23,17 +23,17 @@ export const Footer = () => {
           <Typography variant="h4" align="center">
             <Link to="/">A<span className="andy">ndy</span>の博客</Link>
           </Typography>
-          <Stack className="links" direction="row" spacing={2} alignItems="center" justifyContent="center">
+          <Stack className="links" sx={{flexDirection:{xs:"column", md:"row"}}} spacing={2} alignItems="center" justifyContent="center">
             <Typography>首页</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled}}/>
+            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
             <Typography>技术分享</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled}}/>
+            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
             <Typography>About</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled}}/>
+            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
             <Typography>About</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled}}/>
+            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
             <Typography>About</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled}}/>
+            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
             <Typography>隐私协议</Typography>
           </Stack>
           <Divider sx={{mb: 1}}/>

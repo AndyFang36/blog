@@ -1,14 +1,14 @@
 import {Grain, Home, ThumbUp as ThumbUpIcon, Whatshot} from "@mui/icons-material";
 import {Box, Breadcrumbs, Card, CardActions, CardContent, CardHeader, Container, Divider, Grid, IconButton, Typography} from "@mui/material";
-import {Link, Outlet, Route, Routes} from "react-router-dom";
+import {Link, Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {Sidebar} from "../../containers/Sidebar";
 import "../../../assets/styles/TechnologyPage.css";
 import {useEffect, useRef, useState, Suspense} from "react";
 import {Clock} from "../../../common/components/clock/Clock";
 import {useSelector} from "react-redux";
-import IntroductionPage from "./IntroductionPage";
+import TechIntroPage from "./TechIntroPage";
 import ReactIntroPage from "./react/ReactIntroPage";
-import {CallbackHook, MemoHook} from "./react/hooks";
+import {CallbackHook, EffectHook, MemoHook} from "./react/hooks";
 import * as echarts from "echarts";
 import axios, {Axios} from "axios";
 import CSSIntroPage from "./css/CSSIntroPage";
@@ -16,6 +16,8 @@ import HTMLIntroPage from "./html/HTMLIntroPage";
 import JSIntroPage from "./js/JSIntroPage";
 import ArticleLoading from "./ArticleLoading";
 import {FlexboxLayout, GridLayout, TableLayout} from "./css/layouts";
+import {StateUpdating} from "./react/core";
+import {HeightCompare} from "./js/apis";
 
 export const TechnologyPage = () => {
   const theme = useSelector(state => state["themeToggle"]["theme"]);
@@ -153,11 +155,11 @@ export const TechnologyPage = () => {
   return (
     <Box id="TechnologyPage">
       <Container maxWidth={false}>
-        <Grid container spacing={3} position="relative" columns={16}>
-          <Grid item xs={0} md={3} lg={2} xl={3} sx={{display: {xs: "none", md: "flex"}}}>
+        <Grid container columns={16} spacing={3} position="relative">
+          <Grid item xs={0} md={3} lg={3} xl={3} sx={{display: {xs: "none", md: "flex"}}}>
             <Sidebar/>
           </Grid>
-          <Grid item xs={16} md={8} lg={8} xl={9}>
+          <Grid item xs={16} md={8} lg={9} xl={9}>
             <Card style={styles.card}>
               <CardHeader/>
               <CardContent>
@@ -186,10 +188,10 @@ export const TechnologyPage = () => {
                   </Typography>
                 </Breadcrumbs>
                 <Divider/>
-                <Box className="article" p={1.5}>
+                <Box className="article">
                   <Suspense fallback={<ArticleLoading/>}>
                     <Routes>
-                      <Route index element={<IntroductionPage/>}/>
+                      <Route index element={<TechIntroPage/>}/>
                       <Route path="html/*" element={<Outlet/>}>
                         <Route index element={<HTMLIntroPage/>}/>
                       </Route>
@@ -203,15 +205,24 @@ export const TechnologyPage = () => {
                       </Route>
                       <Route path="javascript/*" element={<Outlet/>}>
                         <Route index element={<JSIntroPage/>}/>
+                        <Route path="api/*" element={<Outlet/>}>
+                          <Route path="heightCompare" element={<HeightCompare/>}/>
+                        </Route>
                       </Route>
                       <Route path="react/*" element={<Outlet/>}>
                         <Route path="intro" index element={<ReactIntroPage/>}/>
                         <Route path="hooks/*" element={<Outlet/>}>
                           <Route path="useCallback" element={<CallbackHook/>}/>
+                          <Route path="useEffect" element={<EffectHook/>}/>
+                          <Route path="useMemo" element={<MemoHook/>}/>
+                        </Route>
+                        <Route path="core/*" element={<Outlet/>}>
+                          <Route path="state-updating" element={<StateUpdating/>}/>
                           <Route path="useEffect" element={<CallbackHook/>}/>
                           <Route path="useMemo" element={<MemoHook/>}/>
                         </Route>
                       </Route>
+                      <Route path="*" element={<Navigate to="/tech" replace={true}/>}/>
                     </Routes>
                   </Suspense>
                 </Box>
@@ -224,7 +235,7 @@ export const TechnologyPage = () => {
               </CardActions>
             </Card>
           </Grid>
-          <Grid item xs={0} md={3} lg={2} xl={4}>
+          <Grid item xs={16} md={3} lg={4} xl={4}>
             <Card style={styles.card}>
               <CardContent>{/*<Clock/>*/}</CardContent>
             </Card>

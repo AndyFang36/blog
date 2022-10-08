@@ -1,6 +1,7 @@
 import {Box, Card, CardActions, CardContent, Container, Typography} from "@mui/material";
 import ReadingImg from "../../assets/images/bg/reading.png"
 import  "../../assets/styles/ReadingPage.css"
+import {MuiPaper} from "../../common/components/MuiPaper";
 
 export const ReadingPage = () => {
   return (
@@ -13,13 +14,10 @@ export const ReadingPage = () => {
         </Box>
       </Container>
       <Container maxWidth="xl" sx={{mt:6}}>
-        This is reading page.
-        <Card>
-          <CardActions>All Posts Motivation Success Self Improvement</CardActions>
-          <CardContent>
-            <Typography height={1000}>xxxx</Typography>
-          </CardContent>
-        </Card>
+        <Typography>This is reading page.</Typography>
+        <MuiPaper sx={{height:1000}}>
+          <Typography>Hello, Let's read!</Typography>
+        </MuiPaper>
       </Container>
     </Box>
   );

@@ -1,7 +1,8 @@
 import {lazy} from "react";
 
 const
-  CallbackHook = lazy(() => import("../hooks/CallbackHook")),
+  EffectHook = lazy(()=>import("./EffectHook")),
+  CallbackHook = lazy(() => import("./CallbackHook")),
   MemoHook = lazy(() => import("./MemoHook"));
 
-export {CallbackHook, MemoHook};
+export {EffectHook, CallbackHook, MemoHook};

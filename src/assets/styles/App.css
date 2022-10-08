@@ -3,10 +3,6 @@
     max-width: 100vw !important;
 }
 
-html{
-    scroll-behavior: smooth;
-    scroll-padding-top: 4rem;
-}
 
 .article p {
     margin: 0.5rem 0;
@@ -15,6 +11,66 @@ html{
 
 code {
     padding: 2px;
-    background-color: #efefef;
+    background-color: #EFEFEF;
     border-radius: 0.25rem;
+}
+
+/* xxs */
+@media all and (max-width: 360px) {
+    h1 { font-size: 1.85rem !important }
+    h2 { font-size: 1.75rem !important }
+    h3 { font-size: 1.60rem !important }
+    h4 { font-size: 1.45rem !important }
+    h5 { font-size: 1.3rem !important }
+    h6 { font-size: 1.15rem !important }
+}
+
+/* xs */
+@media all and (min-width: 360px) and (max-width: 600px) {
+    h1 { font-size: 2.25rem !important }
+    h2 { font-size: 1.9rem !important }
+    h3 { font-size: 1.7rem !important }
+    h4 { font-size: 1.5rem !important }
+    h5 { font-size: 1.3rem !important }
+    h6 { font-size: 1.1rem !important }
+}
+
+/* sm */
+@media all and (min-width: 600px) and (max-width: 900px) {
+    h1 { font-size: 2.5rem !important }
+    h2 { font-size: 2.25rem !important }
+    h3 { font-size: 2rem !important }
+    h4 { font-size: 1.75rem !important }
+    h5 { font-size: 1.5rem !important }
+    h6 { font-size: 1.25rem !important }
+}
+
+/* md */
+@media all and (min-width: 900px) and (max-width: 1200px) {
+    h1 { font-size: 2.5rem !important }
+    h2 { font-size: 2.25rem !important }
+    h3 { font-size: 2rem !important }
+    h4 { font-size: 1.75rem !important }
+    h5 { font-size: 1.5rem !important }
+    h6 { font-size: 1.25rem !important }
+}
+
+/* lg */
+@media all and (min-width: 1200px) and (max-width: 1536px) {
+    h1 { font-size: 3rem !important }
+    h2 { font-size: 2.25rem !important }
+    h3 { font-size: 2rem !important }
+    h4 { font-size: 1.75rem !important }
+    h5 { font-size: 1.5rem !important }
+    h6 { font-size: 1.25rem !important }
+}
+
+/* xl */
+@media all and (min-width: 1536px) {
+    h1 { font-size: 3.5rem !important }
+    h2 { font-size: 3rem !important }
+    h3 { font-size: 2.75rem !important }
+    h4 { font-size: 2.5rem !important }
+    h5 { font-size: 2rem !important }
+    h6 { font-size: 1.5rem !important }
 }

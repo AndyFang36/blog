@@ -3,7 +3,7 @@ import {Suspense} from "react";
 import {Route, Routes} from "react-router-dom";
 import {GalleryPage} from "../pages/GalleryPage";
 import {HomePage, AboutPage} from "../pages";
-import {LifePage} from "../pages/LifePage";
+import {LifePage} from "../pages/life/LifePage";
 import {ReadingPage} from "../pages/ReadingPage";
 import {TechnologyPage} from "../pages/tech/TechnologyPage";
 import {UtilityPage} from "../pages/utils/UtilityPage";
@@ -14,7 +14,7 @@ export const Main = () => {
     <Box component="main" id="MainContainer">
       <Suspense fallback={<LoadingPage/>}>
         <Routes>
-          <Route path="/" index element={<HomePage/>}/>
+          <Route index element={<HomePage/>}/>
           <Route path="tech/*" element={<TechnologyPage/>}/>
           <Route path="life" element={<LifePage/>}/>
           <Route path="utility/*" element={<UtilityPage/>}/>
