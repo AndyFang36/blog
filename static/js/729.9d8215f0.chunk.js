@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[729],{2729:function(u,e,n){n.r(e),n.d(e,{default:function(){return a}});var t=n(4554),l=n(184);function a(){return(0,l.jsx)(t.Z,{id:"TableLayout",children:"table layout..."})}}}]);
+//# sourceMappingURL=729.9d8215f0.chunk.js.map

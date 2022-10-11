@@ -3,6 +3,8 @@ import {Navigate, NavLink, Route, Routes, useNavigate} from "react-router-dom";
 import {AllUtilities} from "./AllUtilities";
 import {SimplifiedTraditionalConversion} from "./text/SimplifiedTraditionalConversion";
 import {useState} from "react";
+import {MuiPaper} from "../../../common/components/MuiPaper";
+import {APILoader, Map} from "@uiw/react-amap";
 
 const bg = {
   backgroundColor: "lightblue",
@@ -22,8 +24,8 @@ export const UtilityPage = () => {
   return (
     <Box id="UtilityPage">
       <Container maxWidth="xl">
-        <Card>
-          <Typography variant="h4">This is utility page.</Typography>
+        <MuiPaper>
+          <Typography variant="h1" align="center">This is utility page.</Typography>
           <Divider/>
           <Tabs onChange={handleChange} value={activeTab} variant="fullWidth"
                 textColor="primary" indicatorColor="primary"
@@ -38,7 +40,12 @@ export const UtilityPage = () => {
             <Route path="simple-traditional" element={<SimplifiedTraditionalConversion/>}/>
             <Route path="*" element={<Navigate to="/" replace={true}/>}/>
           </Routes>
-        </Card>
+          <Container maxWidth={false} id="AMapContainer" style={{ height: 800 }}>
+            <APILoader akay="6244692d6d61d27fbe596a4f06d0d55d">
+              <Map/>
+            </APILoader>
+          </Container>
+        </MuiPaper>
       </Container>
     </Box>
   );
