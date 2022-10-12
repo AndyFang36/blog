@@ -23,7 +23,7 @@ import {ThemeToggle} from "../../features/theme-toggle/ThemeToggle";
 const pages = [
   {name: "首页", path: "/"},
   {name: "技术分享", path: "/tech"},
-  {name: "在线工具", path: "/utility"},
+  {name: "在线工具", path: "/utilities"},
   {name: "生活日常", path: "/life"},
   {name: "我的书屋", path: "/reading"},
   {name: "照片墙", path: "/gallery"},

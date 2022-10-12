@@ -13,5 +13,16 @@
   <body>
     <noscript>您需要启用 JavaScript 才能运行此应用程序。</noscript>
     <div id="Root"></div>
+    <!--
+      引入地图 JSAPI 脚本之前增加代理服务器设置脚本标签，
+      设置代理服务器域名或地址，
+      将下面示例代码中的「您的代理服务器域名或地址」替换为您的代理服务器域名或ip地址，
+      其中_AMapService为代理请求固定前缀，不可省略或修改。
+      （注意您这个设置必须是在  JSAPI 的脚本加载之前进行设置，否则设置无效。）
+    -->
+    <script type="text/javascript">
+      window._AMapSecurityConfig = {securityJsCode: "10c1b2132afdc036dad012e0f5eb55c2"};
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=6244692d6d61d27fbe596a4f06d0d55d"></script>
   </body>
 </html>

@@ -1,7 +1,8 @@
-import {Box, Card, CardActions, CardContent, Container, Typography} from "@mui/material";
-import ReadingImg from "../../assets/images/bg/reading.png"
-import  "../../assets/styles/ReadingPage.css"
-import {MuiPaper} from "../../common/components/MuiPaper";
+import {Box, Container, Typography} from "@mui/material";
+import ReadingImg from "../../../assets/images/bg/reading.png"
+import  "../../../assets/styles/ReadingPage.css"
+import {MuiPaper} from "../../../common/components/MuiPaper";
+import PrideAndPrejudice from "../../../assets/books/Pride and Prejudice.pdf"
 
 export const ReadingPage = () => {
   return (
@@ -15,8 +16,9 @@ export const ReadingPage = () => {
       </Container>
       <Container maxWidth="xl" sx={{mt:6}}>
         <Typography>This is reading page.</Typography>
-        <MuiPaper sx={{height:1000}}>
+        <MuiPaper>
           <Typography>Hello, Let's read!</Typography>
+          <object data={PrideAndPrejudice} width="100%" height={1000} title="pdf"></object>
         </MuiPaper>
       </Container>
     </Box>

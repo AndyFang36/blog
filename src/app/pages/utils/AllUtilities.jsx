@@ -1,4 +1,4 @@
-import {Box, Grid} from "@mui/material";
+import {Box, Divider, Grid} from "@mui/material";
 
 export const AllUtilities = () => {
   return(
@@ -6,6 +6,7 @@ export const AllUtilities = () => {
       <Grid container spacing={3}>
         <Grid item>xxx</Grid>
         <Grid item>xxx</Grid>
+        <Divider/>
         <Grid item>xxx</Grid>
         <Grid item>xxx</Grid>
         <Grid item>xxx</Grid>

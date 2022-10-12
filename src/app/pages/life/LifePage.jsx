@@ -8,9 +8,7 @@ export const LifePage = () => {
       <Container maxWidth={false} disableGutters>
         <section>
           <Box id="Welcome">
-            <Typography fontWeight="bold"
-                        sx={{fontSize: {"xs": "1.5rem", "sm": "1.5rem", "md": "2rem", "lg": "3rem", "xl": "4rem"}}}>Leap
-              of Faith</Typography>
+            <Typography fontWeight="bold" sx={{fontSize: {"xs": "1.5rem", "sm": "1.5rem", "md": "2rem", "lg": "3rem", "xl": "4rem"}}}>Leap of Faith</Typography>
             <Typography sx={{fontSize: {"xs": "1rem", "sm": "1.5rem", "md": "2rem", "lg": "3rem", "xl": "3.5rem"}}}>Trusting
               God is a lifelong journey. Don't travel alone.</Typography>
             <Anchor href="#All" color="inherit" underline="none"><Typography
@@ -22,7 +20,7 @@ export const LifePage = () => {
         <Divider/>
         <Container maxWidth="xl">
           <MuiPaper sx={{p: 3}}>
-            <Typography variant="h1">Happiness is a journey</Typography>
+            <Typography variant="h1" align="center">Happiness is a journey</Typography>
             <Typography variant="body2" paragraph>
               We always convince ourselves that life will be better after we get married, have a baby, then another.
               Then

@@ -30,12 +30,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set BROWSER=none&& set PORT=3000&& react-scripts start",
+    "start": "set BROWSER=none&& set PORT=8080&& react-scripts start",
     "build": "set PUBLIC_URL=https://andyfang36.github.io/blog&& react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "globals": {
+      "AMap": true
+    },
     "extends": [
       "react-app",
       "react-app/jest"
