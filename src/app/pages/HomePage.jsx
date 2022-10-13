@@ -1,5 +1,5 @@
 /** components */
-import {Box, Container, Divider, IconButton, Stack, Tooltip, Typography} from "@mui/material";
+import {Box, Container, Divider, Grid, IconButton, Stack, Tooltip, Typography} from "@mui/material";
 import {A11y, Autoplay, EffectCoverflow, EffectCube, EffectFlip, Navigation, Pagination} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 /** images */
@@ -63,7 +63,7 @@ export default function HomePage() {
         </Swiper>
       </Container>
       <Container><Divider sx={{mt: 1.5, mb: 1.5, borderWidth: 1.5}}/></Container>
-      <Container className="article" maxWidth="xl">
+      <Container className="article" maxWidth="xl" data-aos="zoom-in">
         <Typography variant="h3" fontWeight="bold" align="center">What is a personal blog?</Typography>
         <Typography variant="body1">
           A personal blog is a blog that’s run by an individual author, and they add a “personal touch” to
@@ -124,15 +124,27 @@ export default function HomePage() {
       </Container>
       <Container><Divider sx={{mt: 1.5, mb: 1.5, borderWidth: 1.5}}/></Container>
       <Container id="Logos">
-        <Typography variant="h3" align="center">Thanks👇</Typography>
-        <Stack direction="row" justifyContent="center" spacing={2}>
-          <Tooltip title="React"><IconButton><FaReact id="React"/></IconButton></Tooltip>
-          <Tooltip title="Redux"><IconButton><SiRedux id="Redux"/></IconButton></Tooltip>
-          <Tooltip title="React Router"><IconButton><SiReactrouter id="ReactRouter"/></IconButton></Tooltip>
-          <Tooltip title="Spring Boot"><IconButton><SiSpringboot id="SpringBoot"/></IconButton></Tooltip>
-          <Tooltip title="Swiper"><IconButton><SiSwiper id="Swiper"/></IconButton></Tooltip>
-          <Tooltip title="Jetbrains"><IconButton><SiJetbrains id="Jetbrains"/></IconButton></Tooltip>
-        </Stack>
+        <Typography variant="h3" align="center" mb={1}>Thanks👇</Typography>
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
+            <Tooltip title="React"><IconButton><FaReact id="React"/></IconButton></Tooltip>
+          </Grid>
+          <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
+            <Tooltip title="Redux"><IconButton><SiRedux id="Redux"/></IconButton></Tooltip>
+          </Grid>
+          <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
+            <Tooltip title="React Router"><IconButton><SiReactrouter id="ReactRouter"/></IconButton></Tooltip>
+          </Grid>
+          <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
+            <Tooltip title="Spring Boot"><IconButton><SiSpringboot id="SpringBoot"/></IconButton></Tooltip>
+          </Grid>
+          <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
+            <Tooltip title="Swiper"><IconButton><SiSwiper id="Swiper"/></IconButton></Tooltip>
+          </Grid>
+          <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
+            <Tooltip title="Jetbrains"><IconButton><SiJetbrains id="Jetbrains"/></IconButton></Tooltip>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

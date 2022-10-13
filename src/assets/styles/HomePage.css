@@ -29,6 +29,12 @@
     /*opacity: 80%;*/
 }
 
+#Logos .MuiGrid-item {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #Logos button {
     color: inherit;
 }
@@ -43,7 +49,7 @@
 }
 
 #Logos #React:hover {
-    color: skyblue;
+    color: rgb(97, 218, 251);
 }
 
 #Logos #ReactRouter:hover {
@@ -51,15 +57,15 @@
 }
 
 #Logos #Redux:hover {
-    color: violet;
+    color: rgb(118, 74, 188);
 }
 
 #Logos #SpringBoot:hover {
-    color: limegreen;
+    color: #6CB52D;
 }
 
 #Logos #Swiper:hover {
-    color: blue;
+    color: #0066cc;
 }
 
 #Logos #Jetbrains:hover {
