@@ -8,9 +8,9 @@ import {CssBaseline} from "@mui/material";
 import {App} from "./app/App";
 import AOS from "aos";
 // import reportWebVitals from './reportWebVitals';
-import "./assets/styles/index.css";
-import "./assets/styles/tuesday.css";  // TODO replace with min file
 import "aos/dist/aos.css";
+import "./assets/styles/tuesday.css"; // TODO replace with min file
+import "./assets/styles/index.css";
 
 AOS.init({
   /* Global settings: */

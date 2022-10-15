@@ -1,13 +1,34 @@
 import {Box, Container, Divider, Link as Anchor, Paper, Typography} from "@mui/material";
 import "../../../assets/styles/LifePage.css";
 import {MuiPaper} from "../../../common/components/MuiPaper";
+import {useEffect, useState} from "react";
 
 export const LifePage = () => {
+  const [style, setStyle] = useState({
+    width: document.body.clientWidth,
+    height: document.body.clientWidth / 2,
+    borderTopLeftRadius: document.body.clientWidth / 2,
+    borderTopRightRadius: document.body.clientWidth / 2
+  });
+
+  useEffect(() => {
+    const controller = new AbortController();
+    window.addEventListener("resize", () => {
+      setStyle({
+        width: document.body.clientWidth,
+        height: document.body.clientWidth / 2,
+        borderTopLeftRadius: document.body.clientWidth / 2,
+        borderTopRightRadius: document.body.clientWidth / 2
+      });
+    });
+    return () => controller.abort();
+  }, []);
+
   return (
     <Box id="LifePage" pt={2}>
       <Container maxWidth={false} disableGutters>
         <section>
-          <Box id="Welcome">
+          <Box id="Welcome" style={style}>
             <Typography fontWeight="bold" sx={{fontSize: {"xs": "1.5rem", "sm": "1.5rem", "md": "2rem", "lg": "3rem", "xl": "4rem"}}}>Leap of Faith</Typography>
             <Typography sx={{fontSize: {"xs": "1rem", "sm": "1.5rem", "md": "2rem", "lg": "3rem", "xl": "3.5rem"}}}>Trusting
               God is a lifelong journey. Don't travel alone.</Typography>
@@ -16,7 +37,7 @@ export const LifePage = () => {
               fontWeight="bolder">↓</Typography></Anchor>
           </Box>
         </section>
-        <Typography id="All" variant="h3" align="center">Today's Story</Typography>
+        <Typography id="All" variant="h3" align="center">My Life. My Blog.</Typography>
         <Divider/>
         <Container maxWidth="xl">
           <MuiPaper sx={{p: 3}}>

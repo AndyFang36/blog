@@ -6,8 +6,8 @@
  * Copyright 2020 Shakr Media Co., Ltd.; MIT License
  */
 .animated {
-    animation-duration: 1s;
-    -webkit-animation-duration: 1s;
+    animation-duration: 0.75s;
+    -webkit-animation-duration: 0.75s;
     animation-fill-mode: both;
     -webkit-animation-fill-mode: both;
 }

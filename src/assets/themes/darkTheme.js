@@ -2,7 +2,21 @@ import {ThemeOptions} from "@mui/material";
 
 /** <h3>暗色主题</h3> */
 export const darkTheme: ThemeOptions = {
-  breakpoints: {},
+  breakpoints: {
+    keys: ["xxs", "xs", "sm", "md", "lg", "xl", "xxl", "xxxl", "xxxxl", "xxxxxl"],
+    values: {
+      xxs: 0,
+      xs: 300,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1500,
+      xxl: 2000,
+      xxxl: 3000,
+      xxxxl: 4000,
+      xxxxxl: 5000
+    },
+  },
   components: {},
   direction: "ltr",
   mode: "dark",

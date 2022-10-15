@@ -1,23 +1,30 @@
 /** components */
-import {Box, Container, Divider, Grid, IconButton, Stack, Tooltip, Typography} from "@mui/material";
-import {A11y, Autoplay, EffectCoverflow, EffectCube, EffectFlip, Navigation, Pagination} from "swiper";
+import {Box, Container, Divider, Grid, IconButton, Tooltip, Typography, useMediaQuery} from "@mui/material";
+import {A11y, Autoplay, EffectCoverflow, Navigation, Pagination} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 /** images */
-import BannerImg1 from "../../assets/images/banners/home/banner-1.png";
-import BannerImg2 from "../../assets/images/banners/home/banner-2.png";
-import BannerImg3 from "../../assets/images/banners/home/banner-3.png";
-import BannerImg4 from "../../assets/images/banners/home/banner-4.png";
 import {FaReact} from "react-icons/fa";
-import {SiJetbrains, SiReactrouter, SiRedux, SiSpring, SiSpringboot, SiSwiper} from "react-icons/si";
+import {SiJetbrains, SiReactrouter, SiRedux, SiSpringboot, SiSwiper} from "react-icons/si";
 /** css */
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "../../assets/styles/HomePage.css";
+import {useSelector} from "react-redux";
 
-/** Home Page, path: / */
+function SwiperSlideItem({title, num, ...others}) {
+  return (
+    <Box className={`swiper-slide-item item-${num}`} {...others}>
+      <Typography maxWidth="80%" variant="h3" sx={{color: "rgba(255, 255, 255, 85%)"}}>{title}</Typography>
+    </Box>
+  );
+}
+
+/** <h1>Home Page, path: /</h1> */
 export default function HomePage() {
+  document.title = "首页 - Andyの博客";
+
   return (
     <Box id="HomePage">
       <Container maxWidth={false} disableGutters id="HomeSwiper">
@@ -41,24 +48,16 @@ export default function HomePage() {
           }}
         >
           <SwiperSlide>
-            <Box sx={{backgroundImage: `url(${BannerImg1})`}}>
-              <Typography variant="h3">Do what you say, say what you do.</Typography>
-            </Box>
+            <SwiperSlideItem num={1} title="Do what you say, say what you do."/>
           </SwiperSlide>
           <SwiperSlide>
-            <Box sx={{backgroundImage: `url(${BannerImg2})`}}>
-              <Typography variant="h3">Enjoy the simple things.</Typography>
-            </Box>
+            <SwiperSlideItem num={2} title="Enjoy the simple things."/>
           </SwiperSlide>
           <SwiperSlide>
-            <Box sx={{backgroundImage: `url(${BannerImg3})`}}>
-              <Typography variant="h3">Don't let the past steal your present. </Typography>
-            </Box>
+            <SwiperSlideItem num={3} title="Don't let the past steal your present."/>
           </SwiperSlide>
           <SwiperSlide>
-            <Box sx={{backgroundImage: `url(${BannerImg4})`}}>
-              <Typography variant="h3">Life is brief. Let’s make it wonderful!</Typography>
-            </Box>
+            <SwiperSlideItem num={4} title="Life is brief. Let’s make it wonderful!"/>
           </SwiperSlide>
         </Swiper>
       </Container>

@@ -2,7 +2,6 @@ import {Grain, Home, ThumbUp as ThumbUpIcon, Whatshot} from "@mui/icons-material
 import {Box, Breadcrumbs, Card, CardActions, CardContent, CardHeader, Container, Divider, Grid, IconButton, Typography} from "@mui/material";
 import {Link, Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {Sidebar} from "../../containers/Sidebar";
-import "../../../assets/styles/TechnologyPage.css";
 import {useEffect, useRef, useState, Suspense} from "react";
 import {Clock} from "../../../common/components/clock/Clock";
 import {useSelector} from "react-redux";
@@ -18,6 +17,9 @@ import ArticleLoading from "./ArticleLoading";
 import {FlexboxLayout, GridLayout, TableLayout} from "./css/layouts";
 import {StateUpdating} from "./react/core";
 import {HeightCompare} from "./js/apis";
+import {APILoader, Weather} from "@uiw/react-amap";
+import myAxios from "../../../common/utils/myAxios";
+import "../../../assets/styles/TechnologyPage.css";
 
 export const TechnologyPage = () => {
   const theme = useSelector(state => state["themeToggle"]["theme"]);
@@ -27,13 +29,13 @@ export const TechnologyPage = () => {
       backgroundColor: theme.palette.background.paper
     }
   };
-
   const temperatureGaugeEl = useRef(null);
 
   useEffect(() => {
+    const controller = new AbortController();
     document.title = "技术分享 - Andyの博客";
     echarts.dispose(temperatureGaugeEl.current);
-    const temperatureGauge = echarts.init(temperatureGaugeEl.current, "light", {renderer: "svg"});
+    const temperatureGauge = echarts.init(temperatureGaugeEl.current, theme.mode, {renderer: "svg"});
     temperatureGauge.setOption({
       series: [
         {
@@ -72,12 +74,12 @@ export const TechnologyPage = () => {
             length: 14,
             lineStyle: {
               width: 3,
-              color: "#999"
+              color: "#999999"
             }
           },
           axisLabel: {
             distance: -20,
-            color: "#999",
+            color: "#999999",
             fontSize: 20
           },
           anchor: {
@@ -99,7 +101,7 @@ export const TechnologyPage = () => {
           },
           data: [
             {
-              value: 20
+              value: 0
             }
           ]
         },
@@ -143,20 +145,43 @@ export const TechnologyPage = () => {
         }
       ]
     });
-    /*axios.get("http://wthrcdn.etouch.cn/weather_mini?city=上海").then(response => {
-      const weather = JSON.parse(response.data["forcaset"][0]);
-      const low = (weather["low"].replace(/\D/g, "").trim() + "°").trim();
-      const high = (weather["high"].replace(/\D/g, "").trim() + "°C").trim();
-      const wText = weather["type"] + low + "~" + high;
-      console.log(wText);
-    });*/
-  }, []);
+    const setWeather = () => {
+      myAxios({
+        method: "GET",
+        url: "https://restapi.amap.com/v3/weather/weatherInfo",
+        params: {key: "b2b5555c7a6df9c845f204275b9804ca", city: 330110, extensions: "base"}
+      }).then(response => {
+        console.log(response.data);
+        temperatureGauge.setOption({
+          series: [
+            {
+              data: [
+                {
+                  value: response.data["lives"][0]["temperature"]
+                }
+              ]
+            },
+            {
+              data: [
+                {
+                  value: response.data["lives"][0]["temperature"]
+                }
+              ]
+            }
+          ]
+        });
+      });
+    };
+    setWeather();
+    setInterval(setWeather, 15 * 60 * 1000);
+    return () => controller.abort();
+  }, [theme.mode]);
 
   return (
-    <Box id="TechnologyPage">
+    <Box id="TechnologyPage" pt="6rem">
       <Container maxWidth={false}>
-        <Grid container columns={16} spacing={3} position="relative">
-          <Grid item xs={0} md={3} lg={3} xl={3} sx={{display: {xs: "none", md: "flex"}}}>
+        <Grid container columns={16} spacing={3}>
+          <Grid item xs={0} md={3} lg={3} xl={3} position="relative" display={{xs: "none", md: "block"}}>
             <Sidebar/>
           </Grid>
           <Grid item xs={16} md={8} lg={9} xl={9}>

@@ -5,7 +5,7 @@ export default function AboutPage() {
   document.title = "关于我 - Andyの博客"
 
   return (
-    <Box id="AboutPage" className="animated tdDropInLeft">
+    <Box id="AboutPage" pt="5rem" className="animated tdDropInLeft">
       <Container maxWidth="xl">
         <Typography variant="h2" align="center">About Me</Typography>
         <Divider sx={{m: "0 auto 1rem auto"}}/>

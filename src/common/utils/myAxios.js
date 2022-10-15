@@ -6,7 +6,6 @@ const myAxios = axios.create();
 myAxios.interceptors.request.use(
   config => {
     config.responseEncoding = "UTF-8";
-    config.proxy = {protocol: "http", host: "127.0.0.1", port: 9092};
     const token = localStorage.getItem("token");
     if (token !== null && token !== "") {
       config.headers.authorization = token;

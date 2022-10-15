@@ -76,7 +76,7 @@ export const Sidebar = () => {
   const style = {
     sidebar: {
       backgroundColor: theme.palette.background.paper,
-      minHeight: "80vh", maxHeight: "90vh", overflowY: "auto", position: "fixed", width: "17vw"
+      minHeight: "80vh", maxHeight: "85vh", overflowY: "auto", position:"fixed", width: "17vw"
     }
   };
   const [open, setOpen] = useState({

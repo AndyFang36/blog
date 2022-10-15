@@ -1,8 +1,4 @@
 /************************************************ TechnologyPage *****************************************************/
-#TechnologyPage {
-    padding: 1rem 0;
-}
-
 #TechnologyPage .content {
     border: thin dashed deepskyblue;
 }

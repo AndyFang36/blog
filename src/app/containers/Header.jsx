@@ -63,11 +63,11 @@ export const Header = () => {
   return (
     <AppBar
       id="Header"
-      position="sticky"
+      position="fixed"
       elevation={scrolled ? 3 : 0}
       sx={{
         color: theme.palette.text.primary,
-        backgroundColor: "rgba(255,172,73,0.6)",
+        backgroundColor: "rgba(255,172,73,0)",
         backdropFilter: scrolled ? "blur(3px)" : "none"
       }}
     >

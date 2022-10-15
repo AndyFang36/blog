@@ -24,7 +24,7 @@ export const UtilityPage = () => {
   };
 
   return (
-    <Box id="UtilityPage">
+    <Box id="UtilityPage" pt="5rem">
       <Container maxWidth="xl">
         <MuiPaper>
           <Typography variant="h1" align="center">This is utility page.</Typography>

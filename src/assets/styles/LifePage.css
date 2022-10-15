@@ -4,14 +4,121 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 96vw;
-    height: 48vw;
-    border-radius: 48vw 48vw 0 0;
     margin: 0 auto;
     color: white;
     text-align: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("../../assets/images/bg/mountain.jpg");
     background-attachment: fixed;
+}
+@media all and (max-width: 299px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XS */
+@media all and (min-width: 300px) and (max-width: 599px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+    /* iPhone 4/4s: 320pt * 480pt, 640px * 960px */
+    @media all and (width: 320px) and (height: 480px) and (orientation: portrait) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-640.jpg");
+        }
+    }
+    @media all and (width: 480px) and (height: 320px) and (orientation: landscape) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.50-960.jpg");
+        }
+    }
+    /* iPhone 5/5c/5s/SE1: 320pt * 568pt, 640px * 1136px */
+    @media all and (width: 320px) and (height: 568px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-640.jpg");
+        }
+    }
+    @media all and (width: 568px) and (height: 320px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-1152.jpg");
+        }
+    }
+    /* iPhone 6/6s/7/8/SE2/SE3: 375pt * 667px, 750px * 1334px */
+    @media all and (width: 375px) and (height: 667px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.78-750.jpg");
+        }
+    }
+}
+/* SM */
+@media all and (min-width: 600px) and (max-width: 899px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+    /* iPhone 6/6s/7/8/SE2/SE3: 375pt * 667px, 750px * 1334px */
+    @media all and (width: 667px) and (height: 375px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.78-1334.jpg");
+        }
+    }
+    /* iPad 3~6/Air/Pro9.7: 768pt * 1024pt,	1536px * 2048px */
+    @media all and (width: 768px) and (height: 1024px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-1536.jpg");
+        }
+    }
+}
+/* MD */
+@media all and (min-width: 900px) and (max-width: 1199px) {
+    #LifePage #Welcome {
+        background-image: url("../../assets/images/bg/mountain-1.78-960.jpg");
+    }
+    /* iPad 3~6/Air/Pro9.7: 768pt * 1024pt,	1536px * 2048px */
+    @media all and (width: 1024px) and (height: 768px) and (orientation: landscape){
+        #LifePage #Welcome {
+            background-image: url("../../assets/images/bg/mountain-1.78-2048.jpg");
+        }
+    }
+}
+/* LG */
+@media all and (min-width: 1200px) and (max-width: 1599px) {
+    #LifePage #Welcome {
+        background-image: url("../../assets/images/bg/mountain-1.78-1280.jpg");
+    }
+}
+/* XL */
+@media all and (min-width: 1600px) and (max-width: 2047px) {
+    #LifePage #Welcome {
+        background-image: url("../../assets/images/bg/mountain-1.78-1920.jpg");
+    }
+}
+/* XXL */
+@media all and (min-width: 2048px) and (max-width: 2999px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XXXL */
+@media all and (min-width: 3000px) and (max-width: 3799px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XXXXL */
+@media all and (min-width: 3800px) and (max-width: 4999px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XXXXXL */
+@media all and (min-width: 5000px) {
+    #LifePage #Welcome {
+        background-image: url("../../assets/images/bg/mountain-1.78-6016.jpg");
+    }
+    /* Apple Studio Display */
+    @media all and (width: 5120px) and (height: 2880px) {
+        #HomeSwiper .swiper-slide-item.item-1 {
+            background-image: url("../../assets/images/banners/home/banner-1-1.78-5120.jpg");
+        }
+    }
 }

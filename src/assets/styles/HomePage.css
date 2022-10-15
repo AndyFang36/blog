@@ -6,68 +6,208 @@
     height: auto;
 }
 
+/*  */
 #HomeSwiper [class^="swiper-button"] {
     color: white;
 }
-
 #HomeSwiper [class~="swiper-pagination-bullet-active"] {
     color: inherit;
     background-color: white;
 }
 
-#HomeSwiper .swiper-slide > .MuiBox-root {
-    text-align: center;
+#HomeSwiper .swiper-slide-item {
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 50vw;
+    align-items: center;
+    text-align: center;
     background-size: cover;
 }
+/* XXS */
+@media all and (max-width: 299px) {
+    @media (aspect-ratio: 4/3) {
 
-#HomeSwiper .swiper-slide > .MuiBox-root > h3 {
-    color: rgba(255, 255, 255, 85%);
-    /*opacity: 80%;*/
+    }
+}
+/* XS */
+@media all and (min-width: 300px) and (max-width: 599px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+    /* iPhone 4/4s: 320pt * 480pt, 640px * 960px */
+    @media all and (width: 320px) and (height: 480px) and (orientation: portrait) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-640.jpg");
+        }
+    }
+    @media all and (width: 480px) and (height: 320px) and (orientation: landscape) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.50-960.jpg");
+        }
+    }
+    /* iPhone 5/5c/5s/SE1: 320pt * 568pt, 640px * 1136px */
+    @media all and (width: 320px) and (height: 568px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-640.jpg");
+        }
+    }
+    @media all and (width: 568px) and (height: 320px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-1152.jpg");
+        }
+    }
+    /* iPhone 6/6s/7/8/SE2/SE3: 375pt * 667px, 750px * 1334px */
+    @media all and (width: 375px) and (height: 667px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.78-750.jpg");
+        }
+    }
+}
+/* SM */
+@media all and (min-width: 600px) and (max-width: 899px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+    /* iPhone 6/6s/7/8/SE2/SE3: 375pt * 667px, 750px * 1334px */
+    @media all and (width: 667px) and (height: 375px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.78-1334.jpg");
+        }
+    }
+    /* iPad 3~6/Air/Pro9.7: 768pt * 1024pt,	1536px * 2048px */
+    @media all and (width: 768px) and (height: 1024px) {
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-1536.jpg");
+        }
+    }
+}
+/* MD */
+@media all and (min-width: 900px) and (max-width: 1119px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+    /* iPad 3~6/Air/Pro9.7: 768pt * 1024pt,	1536px * 2048px */
+    @media all and (width: 1024px) and (height: 768px) and (orientation: landscape){
+        #HomeSwiper .swiper-slide-item:nth-child(1) {
+            background-image: url("../../assets/images/banners/home/banner-1-1.33-2048.jpg");
+        }
+    }
+}
+/* LG */
+@media all and (min-width: 1200px) and (max-width: 1599px) {
+    /* default aspect ratio: 16:9 */
+    #HomeSwiper .swiper-slide-item.item-1 {
+        background-image: url("../../assets/images/banners/home/banner-1-1.78-1280.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-2 {
+        background-image: url("../../assets/images/banners/home/banner-2-1.78-1280.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-3 {
+        background-image: url("../../assets/images/banners/home/banner-3-1.78-1280.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-4 {
+        background-image: url("../../assets/images/banners/home/banner-4-1.78-1280.jpg");
+    }
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XL */
+@media all and (min-width: 1600px) and (max-width: 2047px) {
+    /* default aspect ratio: 16:9 */
+    #HomeSwiper .swiper-slide-item.item-1 {
+        background-image: url("../../assets/images/banners/home/banner-1-1.78-1920.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-2 {
+        background-image: url("../../assets/images/banners/home/banner-2-1.78-1920.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-3 {
+        background-image: url("../../assets/images/banners/home/banner-3-1.78-1920.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-4 {
+        background-image: url("../../assets/images/banners/home/banner-4-1.78-1920.jpg");
+    }
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XXL */
+@media all and (min-width: 2048px) and (max-width: 2999px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XXXL */
+@media all and (min-width: 3000px) and (max-width: 3799px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XXXXL */
+@media all and (min-width: 3800px) and (max-width: 4999px) {
+    @media (aspect-ratio: 4/3) {
+
+    }
+}
+/* XXXXXL */
+@media all and (min-width: 5000px) {
+    /* default aspect ratio: 16:9 */
+    #HomeSwiper .swiper-slide-item.item-1 {
+        background-image: url("../../assets/images/banners/home/banner-1-1.78-6144.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-2 {
+        background-image: url("../../assets/images/banners/home/banner-2-1.78-6144.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-3 {
+        background-image: url("../../assets/images/banners/home/banner-3-1.78-6144.jpg");
+    }
+    #HomeSwiper .swiper-slide-item.item-4 {
+        background-image: url("../../assets/images/banners/home/banner-4-1.78-6144.jpg");
+    }
+    @media (aspect-ratio: 4/3) {
+
+    }
+    /* Apple Studio Display */
+    @media all and (width: 5120px) and (height: 2880px) {
+        #HomeSwiper .swiper-slide-item.item-1 {
+            background-image: url("../../assets/images/banners/home/banner-1-1.78-5120.jpg");
+        }
+    }
 }
 
+
+
+/* thx */
 #Logos .MuiGrid-item {
     display: inline-flex;
     justify-content: center;
     align-items: center;
 }
-
 #Logos button {
     color: inherit;
 }
-
 #Logos svg {
     font-size: 2em;
     transition: all 0.5s;
 }
-
 #Logos svg:hover {
     transform: scale(150%);
 }
-
 #Logos #React:hover {
     color: rgb(97, 218, 251);
 }
-
 #Logos #ReactRouter:hover {
     color: red;
 }
-
 #Logos #Redux:hover {
     color: rgb(118, 74, 188);
 }
-
 #Logos #SpringBoot:hover {
     color: #6CB52D;
 }
-
 #Logos #Swiper:hover {
-    color: #0066cc;
+    color: #0066CC;
 }
-
 #Logos #Jetbrains:hover {
     color: black;
 }

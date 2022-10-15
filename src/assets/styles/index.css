@@ -49,7 +49,7 @@ html::-webkit-scrollbar-button {
 html::-webkit-scrollbar-thumb {
     background-color: #e78632;
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .3) 20%, transparent 20%, transparent 40%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, .3) 60%, transparent 60%, transparent 80%, rgba(255, 255, 255, 0.3) 80%);
-    border-radius: 8px;
+    border-radius: 0px;
 }
 
 html::-webkit-scrollbar-track {
