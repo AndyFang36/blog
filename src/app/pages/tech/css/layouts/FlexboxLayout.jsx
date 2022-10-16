@@ -13,11 +13,13 @@ export default function FlexboxLayout() {
   const theme = useSelector(state => state["themeToggle"]["theme"]);
   const initStyle = {
     container: {
-      minHeight: "20rem",
+      height: {xs: "6rem", xl: "20rem"},
+      overflowX: "hidden",
+      overflowY: "auto",
       display: "flex",
       flexWrap: "nowrap",
       flexDirection: "row",
-      justifyContent: "start",
+      justifyContent: "normal",
       alignItems: "normal"
     },
     box: {
@@ -27,7 +29,7 @@ export default function FlexboxLayout() {
     },
   };
   const [style, setStyle] = useState(initStyle);
-  const [count, setCount] = useState(7);
+  const [count, setCount] = useState(4);
   const [open, setOpen] = useState({
     demo1: false
   });
@@ -51,7 +53,7 @@ export default function FlexboxLayout() {
 
   const reset = () => {
     setStyle(initStyle);
-    setCount(7);
+    setCount(4);
     setOpen(false);
   };
 
@@ -81,8 +83,8 @@ export default function FlexboxLayout() {
   function DemoItem({title, order = 0, style}) {
     return (
       <Card sx={{
-        width: "10rem",
-        height: "10rem",
+        minWidth: {xs: "3rem", xl: "10rem"},
+        minHeight: {xs: "3rem", xl: "10rem"},
         m: 1,
         color: theme.palette.text.secondary,
         backgroundColor: theme.palette.background.secondary,
@@ -124,7 +126,7 @@ export default function FlexboxLayout() {
             ))}
           </Box>
           <Divider/>
-          <Stack className="property" spacing={1}>
+          <Stack className="property" spacing={1} style={{height: "30rem", overflowY: "auto"}}>
             <Stack direction="row" alignItems="center">
               <MyFormLabel>盒子数量：</MyFormLabel>
               <IconButton onClick={decrease} disabled={count === 1}><Remove color="warning"/></IconButton>
@@ -236,9 +238,20 @@ export default function FlexboxLayout() {
                     value={style.container.justifyContent}
                     onChange={changeContainerStyle("justifyContent")}
                   >
+                    <FormControlLabel value="normal" control={<Radio/>} label="normal"/>
+                    <FormControlLabel value="center" control={<Radio/>} label="center"/>
                     <FormControlLabel value="start" control={<Radio/>} label="start"/>
                     <FormControlLabel value="end" control={<Radio/>} label="end"/>
-                    <FormControlLabel value="center" control={<Radio/>} label="center"/>
+                    <FormControlLabel value="flex-start" control={<Radio/>} label="flex-start"/>
+                    <FormControlLabel value="flex-end" control={<Radio/>} label="flex-end"/>
+                    <FormControlLabel value="left" control={<Radio/>} label="left"/>
+                    <FormControlLabel value="right" control={<Radio/>} label="right"/>
+                    <FormControlLabel value="space-between" control={<Radio/>} label="space-between"/>
+                    <FormControlLabel value="space-around" control={<Radio/>} label="space-around"/>
+                    <FormControlLabel value="space-evenly" control={<Radio/>} label="space-evenly"/>
+                    <FormControlLabel value="stretch" control={<Radio/>} label="stretch"/>
+                    <FormControlLabel value="safe center" control={<Radio/>} label="safe center"/>
+                    <FormControlLabel value="unsafe center" control={<Radio/>} label="unsafe center"/>
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
