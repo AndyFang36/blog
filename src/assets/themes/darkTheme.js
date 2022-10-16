@@ -34,7 +34,7 @@ export const darkTheme: ThemeOptions = {
     background: {
       default: "#4c4c4c",
       secondary: "#707070",
-      paper: "#494545",
+      paper: "#1d1d1d",
     },
     primary: `#7b582d`,
     secondary: `#7b1fa2`,

@@ -71,12 +71,12 @@ const list = [
   },
 ];
 
-export const Sidebar = () => {
+export const Sidebar = ({width, id, className, component, ...others}) => {
   const theme = useSelector(state => state["themeToggle"]["theme"]);
   const style = {
     sidebar: {
       backgroundColor: theme.palette.background.paper,
-      minHeight: "80vh", maxHeight: "85vh", overflowY: "auto", position:"fixed", width: "17vw"
+      minHeight: "83vh", maxHeight: "85vh", overflowY: "auto", position:"fixed", width: width
     }
   };
   const [open, setOpen] = useState({
@@ -93,7 +93,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <Card id="Sidebar" component="nav" style={style.sidebar}>
+    <Card id={id} className={className} component={component} style={style.sidebar} {...others}>
       <CardContent sx={{pr: 0, pl: 4}}>
         {/*
         <List className="lv1">
