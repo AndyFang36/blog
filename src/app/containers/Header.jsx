@@ -21,13 +21,13 @@ import "../../assets/styles/Header.css";
 import {ThemeToggle} from "../../features/theme-toggle/ThemeToggle";
 
 const pages = [
-  {name: "首页", path: "/"},
-  {name: "技术分享", path: "/tech"},
-  {name: "在线工具", path: "/utilities"},
-  {name: "生活日常", path: "/life"},
-  {name: "我的书屋", path: "/reading"},
-  {name: "照片墙", path: "/gallery"},
-  {name: "关于我", path: "/about"},
+  {name: "首页", path: "/blog"},
+  {name: "技术分享", path: "/blog/tech"},
+  {name: "在线工具", path: "/blog/utilities"},
+  {name: "生活日常", path: "/blog/life"},
+  {name: "我的书屋", path: "/blog/reading"},
+  {name: "照片墙", path: "/blog/gallery"},
+  {name: "关于我", path: "/blog/about"},
 ];
 const settings = ["个人资料", "我的账户", "后台管理", "退出登录"];
 
@@ -77,7 +77,7 @@ export const Header = () => {
       <Container maxWidth={false}>
         <Toolbar disableGutters>
           {/* desktop */}
-          <Link to="/" style={{color: "inherit"}}>
+          <Link to="/blog" style={{color: "inherit"}}>
             <Typography
               className="site-name"
               variant="h4"
@@ -117,7 +117,7 @@ export const Header = () => {
             </Menu>
           </Box>
           {/* mobile */}
-          <Link to="/" style={{color: "inherit"}}>
+          <Link to="/blog" style={{color: "inherit"}}>
             <Typography
               className="site-name"
               variant="h6"

@@ -4,7 +4,7 @@ import {
   Pinterest as PinterestIcon, Twitter as TwitterIcon,
   WhatsApp as WhatsAppIcon,
 } from "@mui/icons-material";
-import {Autocomplete, Box, Button, Container, Divider, Stack, TextField, Typography} from "@mui/material";
+import {Autocomplete, Box, Button, Container, Divider, Stack, TextField, Typography, Link as MuiLink} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import "../../assets/styles/Footer.css";
@@ -20,31 +20,27 @@ export const Footer = () => {
     <Box pt={2} pb={2} id="Footer" component="footer">
       <Container maxWidth={false} id="FooterContainer">
         <Stack justifyItems="center">
-          <Typography variant="h4" align="center">
-            <Link to="/">A<span className="andy">ndy</span>の博客</Link>
+          <Typography variant="h4" align="center" sx={{"&:hover": {color: "red"}}}>
+            <Link to="/blog">Andyの博客</Link>
           </Typography>
-          <Stack className="links" sx={{flexDirection:{xs:"column", md:"row"}}} spacing={2} alignItems="center" justifyContent="center">
-            <Typography>首页</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
-            <Typography>技术分享</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
-            <Typography>About</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
-            <Typography>About</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
-            <Typography>About</Typography>
-            <Divider sx={{borderColor: theme.palette.text.disabled, display:{xs:"none"}}}/>
-            <Typography>隐私协议</Typography>
+          <Stack direction={{xs: "column", xl: "row"}} columnGap={5} rowGap={1} justifyContent="center" alignItems="center">
+            <Link to="/blog">首页</Link>
+            <Link to="/blog/tech">技术分享</Link>
+            <Link to="/blog/utilities">在线工具</Link>
+            <Link to="/blog/life">日常生活</Link>
+            <Link to="/blog/reading">我的书屋</Link>
+            <Link to="/blog/gallery">照片墙</Link>
+            <Link to="/blog/about">关于我</Link>
           </Stack>
           <Divider sx={{mb: 1}}/>
           <Box className="social mb-4">
             <Typography variant="h6" align="center">Stay in touch</Typography>
             <Stack direction="row" spacing={2} alignItems="center" justifyContent="center">
-              <Box className="in"><a href="#"><InstagramIcon/></a></Box>
-              <Box className="fb"><a href="#"><FacebookIcon/></a></Box>
-              <Box className="tw"><a href="#"><TwitterIcon/></a></Box>
-              <Box className="pin"><a href="#"><PinterestIcon/></a></Box>
-              <Box className="dr"><a href="#"><WhatsAppIcon/></a></Box>
+              <Box className="instagram"><a href="#1"><InstagramIcon/></a></Box>
+              <Box className="facebook"><a href="#2"><FacebookIcon/></a></Box>
+              <Box className="tw"><a href="#3"><TwitterIcon/></a></Box>
+              <Box className="pin"><a href="#4"><PinterestIcon/></a></Box>
+              <Box className="whatsapp"><a href="#5"><WhatsAppIcon/></a></Box>
             </Stack>
             <Stack direction="row" justifyContent="center" spacing={2} alignItems="center">
               <Autocomplete
@@ -86,7 +82,7 @@ export const Footer = () => {
           </Box>
           <Divider sx={{mb: 1}}/>
           <Typography className="copyright" align="center">
-            <small>Copyright &copy; 2022 Andy Fang. All Rights Reserved.</small>
+            <small>Copyright &copy; 2022 <MuiLink href="https://github.com/AndyFang36">Andy Fang</MuiLink>. All Rights Reserved.</small>
           </Typography>
         </Stack>
       </Container>

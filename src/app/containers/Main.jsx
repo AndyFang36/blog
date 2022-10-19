@@ -11,13 +11,15 @@ export const Main = () => {
     <Box component="main" id="MainContainer">
       <Suspense fallback={<LoadingPage/>}>
         <Routes>
-          <Route path="/" index element={<HomePage/>}/>
-          <Route path="tech/*" element={<TechnologyPage/>}/>
-          <Route path="life" element={<LifePage/>}/>
-          <Route path="utilities/*" element={<UtilityPage/>}/>
-          <Route path="reading" element={<ReadingPage/>}/>
-          <Route path="gallery" element={<GalleryPage/>}/>
-          <Route path="about" element={<AboutPage/>}/>
+          <Route path="/blog/*">
+            <Route index element={<HomePage/>}/>
+            <Route path="tech/*" element={<TechnologyPage/>}/>
+            <Route path="life" element={<LifePage/>}/>
+            <Route path="utilities/*" element={<UtilityPage/>}/>
+            <Route path="reading" element={<ReadingPage/>}/>
+            <Route path="gallery" element={<GalleryPage/>}/>
+            <Route path="about" element={<AboutPage/>}/>
+          </Route>
         </Routes>
       </Suspense>
     </Box>

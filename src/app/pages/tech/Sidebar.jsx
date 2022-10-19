@@ -117,7 +117,7 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
           {list.map((item, i) =>
             item.sub === null ?
               <ListItem key={`item-${i}`}>
-                <NavLink to={item.path}>
+                <NavLink to={"/blog" + item.path}>
                   <ListItemButton>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.name}/>
@@ -138,7 +138,7 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
                     {item.sub.map((item2, j) =>
                       item2.sub === null ?
                         <ListItem key={`item-${i}-${j}`}>
-                          <NavLink to={item2.path}>
+                          <NavLink to={"/blog" + item2.path}>
                             <ListItemButton>
                               <ListItemIcon>{item2.icon}</ListItemIcon>
                               <ListItemText primary={item2.name}/>
@@ -164,7 +164,7 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
                                   </Fragment>
                                   :
                                   <ListItem key={`item-${i}-${j}-${k}`}>
-                                    <NavLink to={item3.path}>
+                                    <NavLink to={"/blog" + item3.path}>
                                       <ListItemButton>
                                         <ListItemIcon>{item3.icon}</ListItemIcon>
                                         <ListItemText
