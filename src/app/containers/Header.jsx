@@ -14,7 +14,7 @@ import {
 import {useEffect, useState} from "react";
 import {Menu as MenuIcon} from "@mui/icons-material";
 import {useSelector} from "react-redux";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import MyAvatar from "../../assets/images/avatars/avatar-1.png";
 import "../../assets/styles/Header.css";
@@ -39,11 +39,13 @@ export const Header = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   useEffect(() => {
+    const c = new AbortController();
     window.addEventListener("scroll", () => {
-      const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset;
       scrollTop > 0 ? setScrolled(true) : setScrolled(false);
-    });
-  });
+    }, {signal: c.signal});
+    return () => c.abort();
+  }, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -63,25 +65,29 @@ export const Header = () => {
   return (
     <AppBar
       id="Header"
-      position="fixed"
       elevation={scrolled ? 3 : 0}
-      sx={{
-        color: theme.palette.text.primary,
-        backgroundColor: "rgba(255,172,73,0)",
-        backdropFilter: scrolled ? "blur(3px)" : "none"
+      position={scrolled ? "fixed" : "absolute"}
+      style={{
+        top: 0,
+        backgroundColor: scrolled ? "rgba(255,255,255, 0.25)" : "transparent",
+        backdropFilter: scrolled ? "blur(3px)" : "none",
+        transition: "background-color 0.25s, box-shadow 0.25s, backdrop-filter 0.25s",
       }}
     >
-      <Container maxWidth={false} id="HeaderContainer">
+      <Container maxWidth={false}>
         <Toolbar disableGutters>
-          <Typography
-            className="site-name"
-            variant="h4"
-            noWrap
-            component="h4"
-            sx={{mr: 2, display: {xs: "none", md: "flex"}}}
-          >
-            <img src={Logo} alt="Logo" style={{verticalAlign: "text-bottom"}}/>ndyの博客
-          </Typography>
+          {/* desktop */}
+          <Link to="/" style={{color: "inherit"}}>
+            <Typography
+              className="site-name"
+              variant="h4"
+              noWrap
+              sx={{mr: 2, display: {xs: "none", md: "flex"}}}
+              alignItems="baseline"
+            >
+              <img src={Logo} alt="Logo" style={{verticalAlign: "text-bottom", height: "1em"}}/>ndyの博客
+            </Typography>
+          </Link>
           <Box sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
             <IconButton
               size="large"
@@ -110,10 +116,18 @@ export const Header = () => {
               ))}
             </Menu>
           </Box>
-          {/* desktop */}
-          <Typography variant="h6" noWrap component="h6" sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
-            <Box component="img" src={Logo} alt="Logo"/>Andyの博客
-          </Typography>
+          {/* mobile */}
+          <Link to="/" style={{color: "inherit"}}>
+            <Typography
+              className="site-name"
+              variant="h6"
+              noWrap
+              sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}
+              alignItems="baseline"
+            >
+              <img src={Logo} alt="Logo" style={{verticalAlign: "text-bottom", height: "1em"}}/>ndyの博客
+            </Typography>
+          </Link>
           <Stack direction="row" spacing={2} component="nav" sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
             {pages.map((page, index) => (
               <NavLink to={page.path} key={"navLink-" + index}>

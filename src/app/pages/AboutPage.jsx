@@ -1,5 +1,5 @@
 import {Box, Container, Divider, Grid, Link as Anchor, Typography} from "@mui/material";
-import Avatar from "../../assets/images/avatars/avatar.png";
+import {MeImg, MeImgPlaceholder} from "../../assets/images/avatars"
 
 export default function AboutPage() {
   document.title = "关于我 - Andyの博客"
@@ -34,7 +34,7 @@ export default function AboutPage() {
             </Typography>
           </Grid>
           <Grid item md={6}>
-            <img src={Avatar} alt="avatar" width="100%"/>
+            <img src={MeImg} alt="avatar" width="100%"/>{/* data-src={MeImgPlaceholder}*/}
           </Grid>
         </Grid>
       </Container>

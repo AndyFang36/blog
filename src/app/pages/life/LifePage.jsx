@@ -3,7 +3,7 @@ import "../../../assets/styles/LifePage.css";
 import {MuiPaper} from "../../../common/components/MuiPaper";
 import {useEffect, useState} from "react";
 
-export const LifePage = () => {
+export default function LifePage() {
   const [style, setStyle] = useState({
     width: document.body.clientWidth,
     height: document.body.clientWidth / 2,

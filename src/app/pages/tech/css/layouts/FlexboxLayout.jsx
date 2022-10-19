@@ -20,7 +20,9 @@ export default function FlexboxLayout() {
       flexWrap: "nowrap",
       flexDirection: "row",
       justifyContent: "normal",
-      alignItems: "normal"
+      alignItems: "normal",
+      rowGap: "normal",
+      columnGap: "normal",
     },
     box: {
       flexBasis: "auto",
@@ -41,6 +43,8 @@ export default function FlexboxLayout() {
       `  flex-wrap: ${style.container.flexWrap};\n` +
       `  justify-content: ${style.container.justifyContent};\n` +
       `  align-items: ${style.container.alignItems};\n` +
+      `  row-gap: ${style.container.rowGap};\n` +
+      `  column-gap: ${style.container.columnGap};\n` +
       `}\n\n` +
       `#Box {\n` +
       `  flex-basis: ${style.box.flexBasis};\n` +
@@ -110,7 +114,7 @@ export default function FlexboxLayout() {
           <Menu sx={{display: {sm: "block", md: "none"}}}/>
         </IconButton>
         <Stack bgcolor={theme.palette.background.default} className="demo" spacing={1} borderRadius={5}>
-          <Toolbar style={{justifyContent: "space-between"}}>
+          <Toolbar className="top" style={{justifyContent: "space-between"}}>
             <Stack direction="row" spacing={1} fontSize="large">
               <span>🔴</span><span>🟡</span><span>🟢</span>
             </Stack>
@@ -126,7 +130,7 @@ export default function FlexboxLayout() {
             ))}
           </Box>
           <Divider/>
-          <Stack className="property" spacing={1} style={{height: "30rem", overflowY: "auto"}}>
+          <Stack className="property" spacing={1} height="30rem" style={{overflowY: "auto"}}>
             <Stack direction="row" alignItems="center">
               <MyFormLabel>盒子数量：</MyFormLabel>
               <IconButton onClick={decrease} disabled={count === 1}><Remove color="warning"/></IconButton>
@@ -269,6 +273,32 @@ export default function FlexboxLayout() {
                     <FormControlLabel value="end" control={<Radio/>} label="end"/>
                   </RadioGroup>
                 </FormControl>
+                <FormControl>
+                  <MyFormLabel>row-gap</MyFormLabel>
+                  <RadioGroup
+                    row
+                    name="row-gap"
+                    value={style.container.rowGap}
+                    onChange={changeContainerStyle("rowGap")}
+                  >
+                    <FormControlLabel value="normal" control={<Radio/>} label="normal"/>
+                    <FormControlLabel value="16px" control={<Radio/>} label="16px"/>
+                    <FormControlLabel value="10%" control={<Radio/>} label="10%"/>
+                  </RadioGroup>
+                </FormControl>
+                <FormControl>
+                  <MyFormLabel>column-gap</MyFormLabel>
+                  <RadioGroup
+                    row
+                    name="column-gap"
+                    value={style.container.columnGap}
+                    onChange={changeContainerStyle("columnGap")}
+                  >
+                    <FormControlLabel value="normal" control={<Radio/>} label="normal"/>
+                    <FormControlLabel value="16px" control={<Radio/>} label="16px"/>
+                    <FormControlLabel value="10%" control={<Radio/>} label="10%"/>
+                  </RadioGroup>
+                </FormControl>
               </Stack>
             </fieldset>
           </Stack>
@@ -284,7 +314,7 @@ export default function FlexboxLayout() {
           <Collapse in={open.demo1} timeout="auto" unmountOnExit>
             <SyntaxHighlighter
               language="css"
-              style={theme.mode === "light" ? atomOneLight : atomOneDark}
+              style={theme.codeBlock}
               showLineNumbers={true}
               wrapLongLines={true}
             >

@@ -15,7 +15,7 @@ const bg = {
 
 export const UtilityPage = () => {
   const navigate = useNavigate();
-  const {pathname} = useLocation()
+  const {pathname} = useLocation();
   const [activeTab, setActiveTab] = useState("all");
 
   const handleChange = (e, newValue) => {
@@ -31,6 +31,7 @@ export const UtilityPage = () => {
           <Divider/>
           <Tabs onChange={handleChange} value={activeTab} variant="scrollable" scrollButtons="auto" textColor="primary" indicatorColor="primary">
             <Tab value="all" label="全部" sx={activeTab === "all" ? bg : {}}/>
+            <Tab value="reference" label="参考查询" sx={activeTab === "reference" ? bg : {}}/>
             <Tab value="text" label="文本类" sx={activeTab === "text" ? bg : {}}/>
             <Tab value="image" label="图片类" sx={activeTab === "image" ? bg : {}}/>
             <Tab value="dev" label="开发类" sx={activeTab === "dev" ? bg : {}}/>

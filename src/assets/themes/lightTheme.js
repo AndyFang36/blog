@@ -1,6 +1,7 @@
 import {ThemeOptions} from "@mui/material";
+import {atomOneLight} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-/** <h3>亮色主题</h3> */
+/** <h1>亮色主题</h1> */
 export const lightTheme: ThemeOptions = {
   breakpoints: {
     keys: ["xxs", "xs", "sm", "md", "lg", "xl", "xxl", "xxxl", "xxxxl", "xxxxxl"],
@@ -17,6 +18,7 @@ export const lightTheme: ThemeOptions = {
       xxxxxl: 5000
     },
   },
+  codeBlock: atomOneLight,
   components: {},
   direction: "ltr",
   mode: "light",

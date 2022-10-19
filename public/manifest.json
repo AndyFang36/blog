@@ -1,13 +1,43 @@
 {
-  "short_name": "Andyの个人博客",
-  "version_name": "0.1.0",
-  "name": "Andyの个人博客网站",
   "author": "Andy Fang",
+  "short_name": "Andyの博客",
+  "categories": [
+    "books",
+    "business",
+    "education",
+    "entertainment",
+    "finance",
+    "fitness",
+    "food",
+    "games",
+    "government",
+    "health",
+    "kids",
+    "lifestyle",
+    "magazines",
+    "medical",
+    "music",
+    "navigation",
+    "news",
+    "personalization",
+    "photo",
+    "politics",
+    "productivity",
+    "security",
+    "shopping",
+    "social",
+    "sports",
+    "travel",
+    "utilities",
+    "weather"
+  ],
+  "description": "Andy Fang's personal blog site to share my life.",
   "developer": {
     "name": "Andy Fang",
     "url": "https://www.github.com/AndyFang36"
   },
-  "description": "Andy Fang's personal blog site to share my life.",
+  "version_name": "0.1.0",
+  "name": "Andyの个人博客网站",
   "homepage_url": "https://www.andyfang.info",
   "icons": [
     {
@@ -21,14 +51,14 @@
       "sizes": "128x128"
     },
     {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
       "src": "logo256.png",
       "type": "image/png",
       "sizes": "256x256"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "offline_enabled": true,

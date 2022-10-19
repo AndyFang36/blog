@@ -1,16 +1,21 @@
 import ReactDOM from "react-dom/client";
 import {StrictMode} from "react";
 import {Provider} from "react-redux";
-import store from "./app/store";
+import {store} from "./app/store";
 import {BrowserRouter} from "react-router-dom";
 import {ScrollToTop} from "./common/components/ScrollToTop";
 import {CssBaseline} from "@mui/material";
 import {App} from "./app/App";
 import AOS from "aos";
-// import reportWebVitals from './reportWebVitals';
-import "aos/dist/aos.css";
-import "./assets/styles/tuesday.css"; // TODO replace with min file
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
 import "./assets/styles/index.css";
+import "aos/dist/aos.css";
+import "./assets/styles/tuesday.css";
+
+if (typeof window["__REACT_DEVTOOLS_GLOBAL_HOOK__"] === "object") {
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {};
+}
 
 AOS.init({
   /* Global settings: */
@@ -46,4 +51,6 @@ ReactDOM.createRoot(document.getElementById("Root")).render(
   </StrictMode>
 );
 
-// reportWebVitals(console.log);
+serviceWorkerRegistration.register();
+
+reportWebVitals(console.log);

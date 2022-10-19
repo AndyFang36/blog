@@ -1,4 +1,5 @@
 import {ThemeOptions} from "@mui/material";
+import {atomOneDark} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 /** <h3>暗色主题</h3> */
 export const darkTheme: ThemeOptions = {
@@ -17,6 +18,7 @@ export const darkTheme: ThemeOptions = {
       xxxxxl: 5000
     },
   },
+  codeBlock: atomOneDark,
   components: {},
   direction: "ltr",
   mode: "dark",

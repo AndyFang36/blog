@@ -1,11 +1,8 @@
 import {Box} from "@mui/material";
 import {Suspense} from "react";
 import {Route, Routes} from "react-router-dom";
-import {GalleryPage} from "../pages/GalleryPage";
-import {HomePage, AboutPage} from "../pages";
-import {LifePage} from "../pages/life/LifePage";
+import {HomePage, TechnologyPage, LifePage, GalleryPage, AboutPage} from "../pages";
 import {ReadingPage} from "../pages/reading/ReadingPage";
-import {TechnologyPage} from "../pages/tech/TechnologyPage";
 import {UtilityPage} from "../pages/utils/UtilityPage";
 import {LoadingPage} from "../pages/LoadingPage";
 
