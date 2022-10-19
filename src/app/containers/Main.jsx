@@ -11,7 +11,7 @@ export const Main = () => {
     <Box component="main" id="MainContainer">
       <Suspense fallback={<LoadingPage/>}>
         <Routes>
-          <Route index element={<HomePage/>}/>
+          <Route path="/" index element={<HomePage/>}/>
           <Route path="tech/*" element={<TechnologyPage/>}/>
           <Route path="life" element={<LifePage/>}/>
           <Route path="utilities/*" element={<UtilityPage/>}/>
