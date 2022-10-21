@@ -10,10 +10,10 @@ import {
   Toolbar,
   Tooltip,
   Typography,
+  useTheme
 } from "@mui/material";
 import {useEffect, useState} from "react";
 import {Menu as MenuIcon} from "@mui/icons-material";
-import {useSelector} from "react-redux";
 import {Link, NavLink} from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import MyAvatar from "../../assets/images/avatars/avatar-1.png";
@@ -32,13 +32,14 @@ const pages = [
 const settings = ["个人资料", "我的账户", "后台管理", "退出登录"];
 
 export const Header = () => {
-  const theme = useSelector(state => state["themeToggle"]["theme"]);
+  const theme = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   useEffect(() => {
+    console.log("Header loaded.");
     const c = new AbortController();
     window.addEventListener("scroll", () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset;
@@ -139,14 +140,14 @@ export const Header = () => {
           </Stack>
           <Box sx={{flexGrow: 0}}>
             <ThemeToggle/>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
+            <Tooltip title="打开设置" arrow={true}>
+              <IconButton onClick={handleOpenUserMenu}>
                 <Avatar alt="Andy Fang" src={MyAvatar}/>
               </IconButton>
             </Tooltip>
             <Menu
               sx={{mt: "45px"}}
-              id="menu-appbar"
+              id="SettingsMenu"
               anchorEl={anchorElUser}
               anchorOrigin={{vertical: "top", horizontal: "right"}}
               keepMounted

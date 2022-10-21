@@ -1,26 +1,35 @@
 import {
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
-  Pinterest as PinterestIcon, Twitter as TwitterIcon,
+  Pinterest as PinterestIcon,
+  Twitter as TwitterIcon,
   WhatsApp as WhatsAppIcon,
 } from "@mui/icons-material";
-import {Autocomplete, Box, Button, Container, Divider, Stack, TextField, Typography, Link as MuiLink} from "@mui/material";
+import {
+  Autocomplete,
+  Box, Button,
+  Container,
+  Divider,
+  Stack,
+  TextField, Typography,
+  Link as MuiLink
+} from "@mui/material";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
 import "../../assets/styles/Footer.css";
-import {useState} from "react";
 
 export const Footer = () => {
-  const theme = useSelector(state => state["themeToggle"]["theme"]);
   const [options, setOptions] = useState([]);
   const [value, setValue] = useState("");
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(()=>console.log("Footer loaded."),[])
 
   return (
     <Box pt={2} pb={2} id="Footer" component="footer">
       <Container maxWidth={false} id="FooterContainer">
         <Stack justifyItems="center">
-          <Typography variant="h4" align="center" sx={{"&:hover": {color: "red"}}}>
+          <Typography variant="h4" align="center">
             <Link to="/blog">Andyの博客</Link>
           </Typography>
           <Stack direction={{xs: "column", xl: "row"}} columnGap={5} rowGap={1} justifyContent="center" alignItems="center">
@@ -74,7 +83,7 @@ export const Footer = () => {
                 clearOnBlur
                 open={inputValue !== ""}
                 renderInput={(params) =>
-                  <TextField {...params} placeholder="Enter your email here"/>
+                  <TextField {...params} placeholder="Enter your email here..."/>
                 }
               />
               <Button disableElevation variant="contained" size="large" color="success">Subscribe</Button>
@@ -82,7 +91,9 @@ export const Footer = () => {
           </Box>
           <Divider sx={{mb: 1}}/>
           <Typography className="copyright" align="center">
-            <small>Copyright &copy; 2022 <MuiLink href="https://github.com/AndyFang36">Andy Fang</MuiLink>. All Rights Reserved.</small>
+            <small>
+              Copyright &copy; 2022 <MuiLink href="https://github.com/AndyFang36">Andy Fang</MuiLink>. All Rights Reserved.
+            </small>
           </Typography>
         </Stack>
       </Container>

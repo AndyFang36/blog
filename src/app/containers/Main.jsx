@@ -1,12 +1,14 @@
 import {Box} from "@mui/material";
-import {Suspense} from "react";
+import {Suspense, useEffect} from "react";
 import {Outlet, Route, Routes} from "react-router-dom";
 import {HomePage, TechnologyPage, LifePage, GalleryPage, AboutPage} from "../pages";
 import {ReadingPage} from "../pages/reading/ReadingPage";
 import {UtilityPage} from "../pages/utils/UtilityPage";
 import {LoadingPage} from "../pages/LoadingPage";
+import Error from "../errors/Error";
 
 export const Main = () => {
+  useEffect(()=>console.log("Main loaded."))
   return (
     <Box component="main" id="MainContainer">
       <Suspense fallback={<LoadingPage/>}>
@@ -19,6 +21,7 @@ export const Main = () => {
             <Route path="reading" element={<ReadingPage/>}/>
             <Route path="gallery" element={<GalleryPage/>}/>
             <Route path="about" element={<AboutPage/>}/>
+            <Route path="*" element={<Error type="NOT_FOUND"/>}/>
           </Route>
         </Routes>
       </Suspense>

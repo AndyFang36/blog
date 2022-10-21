@@ -1,32 +1,9 @@
-import {ThemeOptions} from "@mui/material";
-import {atomOneDark} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import {createTheme} from "@mui/material";
 
-/** <h3>暗色主题</h3> */
-export const darkTheme: ThemeOptions = {
-  breakpoints: {
-    keys: ["xxs", "xs", "sm", "md", "lg", "xl", "xxl", "xxxl", "xxxxl", "xxxxxl"],
-    values: {
-      xxs: 0,
-      xs: 300,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1500,
-      xxl: 2000,
-      xxxl: 3000,
-      xxxxl: 4000,
-      xxxxxl: 5000
-    },
-  },
-  codeBlock: atomOneDark,
-  components: {},
-  direction: "ltr",
-  mode: "dark",
-  palette: {
-    common: {
-      black: "rgba(0, 0, 0, 1)",
-      white: "rgba(255, 255,255, 1)",
-    },
+/** <h1>暗色主题</h1> */
+export const darkTheme = createTheme({
+  palette:{
+    mode:"dark",
     text: {
       primary: "rgba(255, 255, 255, 0.9)",
       secondary: "rgba(255, 255, 255, 0.7)",
@@ -34,34 +11,54 @@ export const darkTheme: ThemeOptions = {
       icon: "rgba(255, 255, 255, 0.5)",
     },
     background: {
-      default: "#4c4c4c",
-      secondary: "#707070",
-      paper: "#1d1d1d",
+      default: "#393939",
+      paper: "#1D1D1D",
     },
-    primary: `#7b582d`,
-    secondary: `#7b1fa2`,
-    error: `#c62828`,
-    warning: `#e65100`,
-    info: `#01579b`,
-    success: `#1b5e20`,
+    primary: {
+      main: `#cd7e1f`,
+      // secondary: "#704003"
+    },
+  }
+});
+/*palette: {
+    common: {
+      black: "rgba(0, 0, 0, 1)",
+      white: "rgba(255, 255,255, 1)",
+    },
+
+    secondary: {
+      main: `#7B1FA2`
+    },
+    error: {
+      main: `#C62828`
+    },
+    warning: {
+      main: `#E65100`
+    },
+    info: {
+      main: `#01579B`
+    },
+    success: {
+      main: `#1B5E20`
+    },
     grey: {
-      50: "#fafafa",
-      100: "#f5f5f5",
-      200: "#eeeeee",
-      300: "#e0e0e0",
-      400: "#bdbdbd",
-      500: "#9e9e9e",
+      50: "#FAFAFA",
+      100: "#F5F5F5",
+      200: "#EEEEEE",
+      300: "#E0E0E0",
+      400: "#BDBDBD",
+      500: "#9E9E9E",
       600: "#757575",
       700: "#616161",
       800: "#424242",
       900: "#212121",
-      A100: "#f5f5f5",
-      A200: "#eeeeee",
-      A400: "#bdbdbd",
+      A100: "#F5F5F5",
+      A200: "#EEEEEE",
+      A400: "#BDBDBD",
       A700: "#616161",
     },
     action: {
-      active: "#fff",
+      active: "#FFFFFF",
       hover: "rgba(255, 255, 255, 0.08)",
       hoverOpacity: 0.08,
       selected: "rgba(255, 255, 255, 0.16)",
@@ -75,7 +72,20 @@ export const darkTheme: ThemeOptions = {
     },
     divider: "rgba(255, 255, 255, 0.12)",
     contrastThreshold: 3,
+  },*/
+/*
+breakpoints: {
+    keys: ["xs", "sm", "md", "lg", "xl"],
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
   },
+  components: {},
+  direction: "ltr",
   shape: {borderRadius: 4},
   spacing: (factor: number) => (`${0.25 * factor}rem`),
   mixins: {},
@@ -141,5 +151,4 @@ export const darkTheme: ThemeOptions = {
     modal: 1300,
     snackbar: 1400,
     tooltip: 1500,
-  },
-};
+  },*/

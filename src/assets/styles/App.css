@@ -1,94 +1,133 @@
-*, *::before, *::after {
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-form, input, textarea, select, option, label {
-    user-select: auto;
-    -webkit-user-select: auto;
-}
-
 #App {
-    min-height: 100vh !important;
+  min-height: 100vh;
 }
 
-img[data-src] {
-    filter: blur(0.2rem);
+:not(.swiper *) {
+  transition: color 0.1s linear, background-color 1s linear;
 }
 
-img {
-    filter: blur(0rem);
-    transition: filter 1s;
+:not(form, input, textarea, select, option, label) {
+  user-select: none !important;
+  -webkit-user-select: none !important;
 }
 
-.article p.zh {
-    margin: 4ch 0;
+a {
+  text-decoration: none;
+}
+a:active {
+  color: unset;
+}
+a:link{
+  color: unset;
 }
 
 code {
-    padding: 2px;
-    border-radius: 0.25rem;
+  padding: 2px;
+  border-radius: 0.25rem;
 }
 
+
+/* 性能优化
+img[data-src] {
+  filter: blur(0.2rem);
+}
+
+img {
+  filter: blur(0rem);
+  transition: filter 1s;
+}
+*/
+
+@media (min-width: 1536px) {
+  .article p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 2048px) {
+  .article p {
+    font-size: 2rem;
+  }
+}
+
+.article p.zh {
+  text-indent: 4ch;
+}
+.article p::first-letter {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+
+/* 覆盖默认字体大小 */
 /* xxs */
-@media all and (max-width: 360px) {
-    h1 { font-size: 1.85rem !important }
-    h2 { font-size: 1.75rem !important }
-    h3 { font-size: 1.60rem !important }
-    h4 { font-size: 1.45rem !important }
-    h5 { font-size: 1.3rem !important }
-    h6 { font-size: 1.15rem !important }
+@media (max-width: 359px) {
+  h1 { font-size: 1.85rem !important }
+  h2 { font-size: 1.75rem !important }
+  h3 { font-size: 1.60rem !important }
+  h4 { font-size: 1.45rem !important }
+  h5 { font-size: 1.3rem !important }
+  h6 { font-size: 1.15rem !important }
 }
 /* xs */
-@media all and (min-width: 360px) and (max-width: 600px) {
-    h1 { font-size: 2.25rem !important }
-    h2 { font-size: 1.9rem !important }
-    h3 { font-size: 1.7rem !important }
-    h4 { font-size: 1.5rem !important }
-    h5 { font-size: 1.3rem !important }
-    h6 { font-size: 1.1rem !important }
+@media (min-width: 360px) and (max-width: 600px) {
+  h1 { font-size: 2.25rem !important }
+  h2 { font-size: 1.9rem !important }
+  h3 { font-size: 1.7rem !important }
+  h4 { font-size: 1.5rem !important }
+  h5 { font-size: 1.3rem !important }
+  h6 { font-size: 1.1rem !important }
 }
 /* sm */
-@media all and (min-width: 600px) and (max-width: 900px) {
-    h1 { font-size: 2.5rem !important }
-    h2 { font-size: 2.25rem !important }
-    h3 { font-size: 2rem !important }
-    h4 { font-size: 1.75rem !important }
-    h5 { font-size: 1.5rem !important }
-    h6 { font-size: 1.25rem !important }
+@media (min-width: 600px) and (max-width: 900px) {
+  h1 { font-size: 2.5rem !important }
+  h2 { font-size: 2.25rem !important }
+  h3 { font-size: 2rem !important }
+  h4 { font-size: 1.75rem !important }
+  h5 { font-size: 1.5rem !important }
+  h6 { font-size: 1.25rem !important }
 }
 /* md */
-@media all and (min-width: 900px) and (max-width: 1200px) {
-    h1 { font-size: 2.5rem !important }
-    h2 { font-size: 2.25rem !important }
-    h3 { font-size: 2rem !important }
-    h4 { font-size: 1.75rem !important }
-    h5 { font-size: 1.5rem !important }
-    h6 { font-size: 1.25rem !important }
+@media (min-width: 900px) and (max-width: 1200px) {
+  h1 { font-size: 2.5rem !important }
+  h2 { font-size: 2.25rem !important }
+  h3 { font-size: 2rem !important }
+  h4 { font-size: 1.75rem !important }
+  h5 { font-size: 1.5rem !important }
+  h6 { font-size: 1.25rem !important }
 }
 /* lg */
-@media all and (min-width: 1200px) and (max-width: 1536px) {
-    h1 { font-size: 3rem !important }
-    h2 { font-size: 2.25rem !important }
-    h3 { font-size: 2rem !important }
-    h4 { font-size: 1.75rem !important }
-    h5 { font-size: 1.5rem !important }
-    h6 { font-size: 1.25rem !important }
+@media (min-width: 1200px) and (max-width: 1536px) {
+  h1 { font-size: 3rem !important }
+  h2 { font-size: 2.25rem !important }
+  h3 { font-size: 2rem !important }
+  h4 { font-size: 1.75rem !important }
+  h5 { font-size: 1.5rem !important }
+  h6 { font-size: 1.25rem !important }
 }
 /* xl */
-@media all and (min-width: 1536px) {
-    h1 { font-size: 4rem !important }
-    h2 { font-size: 3rem !important }
-    h3 { font-size: 2.75rem !important }
-    h4 { font-size: 2.5rem !important }
-    h5 { font-size: 2rem !important }
-    h6 { font-size: 1.5rem !important }
+@media (min-width: 1536px) {
+  h1 { font-size: 4rem !important }
+  h2 { font-size: 3rem !important }
+  h3 { font-size: 2.75rem !important }
+  h4 { font-size: 2.5rem !important }
+  h5 { font-size: 2rem !important }
+  h6 { font-size: 1.5rem !important }
 }
 
-.MuiIconButton-root {
-    color: inherit !important;
+@media (min-width: 2048px) {
+  h1 { font-size: 5.0rem !important }
+  h2 { font-size: 4.5rem !important }
+  h3 { font-size: 4.0rem !important }
+  h4 { font-size: 3.5rem !important }
+  h5 { font-size: 3.0rem !important }
+  h6 { font-size: 2.5rem !important }
 }
 
-.MuiRadio-root:not(.Mui-checked) {
-    color: inherit !important;
-}
+/* 覆盖MUI默认样式 */
+/*.MuiAppBar-root,
+.MuiIconButton-root,
+.MuiRadio-root:not(.Mui-checked),
+.MuiTab-root {
+  color: inherit !important;
+}*/

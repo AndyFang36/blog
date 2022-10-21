@@ -1,8 +1,13 @@
 import {ExpandLess, ExpandMore, Info, Send, Webhook} from "@mui/icons-material";
-import {Card, CardContent, Collapse, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography} from "@mui/material";
+import {
+  Card, CardContent, Collapse,
+  Divider,
+  List, ListItem, ListItemButton, ListItemIcon, ListItemText,
+  Typography,
+  useTheme
+} from "@mui/material";
 import {Fragment, useState} from "react";
 import {NavLink, useLocation} from "react-router-dom";
-import {useSelector} from "react-redux";
 import {FaHtml5, FaCss3Alt, FaReact, FaNodeJs} from "react-icons/fa";
 import {DiJavascript} from "react-icons/di";
 import {SiSpring} from "react-icons/si";
@@ -86,10 +91,13 @@ const list = [
 
 export const Sidebar = ({width, id, className, component, ...others}) => {
   const {pathname} = useLocation();
-  const theme = useSelector(state => state["themeToggle"]["theme"]);
+  const theme = useTheme();
   const style = {
+    listItem: {
+      backgroundColor: theme.palette.primary.main,
+      // "&.active": theme.palette.primary.secondary
+    },
     sidebar: {
-      backgroundColor: theme.palette.background.paper,
       minHeight: "83vh", maxHeight: "85vh", overflowY: "auto", position: "fixed", width: width
     }
   };
@@ -116,7 +124,7 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
         <List className="lv1">
           {list.map((item, i) =>
             item.sub === null ?
-              <ListItem key={`item-${i}`}>
+              <ListItem key={`item-${i}`} style={style.listItem}>
                 <NavLink to={"/blog" + item.path}>
                   <ListItemButton>
                     <ListItemIcon>{item.icon}</ListItemIcon>
@@ -126,7 +134,7 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
               </ListItem>
               :
               <Fragment key={`item-${i}`}>
-                <ListItem className="sup">
+                <ListItem className="sup" style={style.listItem}>
                   <ListItemButton onClick={toggleCollapse(item.path)}>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.name}/>
@@ -137,7 +145,7 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
                   <List className="sub lv2">
                     {item.sub.map((item2, j) =>
                       item2.sub === null ?
-                        <ListItem key={`item-${i}-${j}`}>
+                        <ListItem key={`item-${i}-${j}`} style={style.listItem}>
                           <NavLink to={"/blog" + item2.path}>
                             <ListItemButton>
                               <ListItemIcon>{item2.icon}</ListItemIcon>
@@ -147,7 +155,7 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
                         </ListItem>
                         :
                         <Fragment key={`item-${i}-${j}`}>
-                          <ListItem className="sup">
+                          <ListItem className="sup" style={style.listItem}>
                             <ListItemButton onClick={toggleCollapse(item2.path)}>
                               <ListItemIcon>{item2.icon}</ListItemIcon>
                               <ListItemText primary={item2.name}/>
@@ -163,8 +171,8 @@ export const Sidebar = ({width, id, className, component, ...others}) => {
                                     <Divider/>
                                   </Fragment>
                                   :
-                                  <ListItem key={`item-${i}-${j}-${k}`}>
-                                    <NavLink to={"/blog" + item3.path}>
+                                  <ListItem key={`item-${i}-${j}-${k}`} style={style.listItem}>
+                                    <NavLink to={"/blog" + item3.path} style={{".active":{backgroundColor: theme.palette.background.paper}}}>
                                       <ListItemButton>
                                         <ListItemIcon>{item3.icon}</ListItemIcon>
                                         <ListItemText

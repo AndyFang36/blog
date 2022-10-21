@@ -1,56 +1,40 @@
-import {createSlice} from '@reduxjs/toolkit'
-import {lightTheme} from "../../assets/themes/lightTheme";
-import {darkTheme} from "../../assets/themes/darkTheme";
+import {createSlice} from "@reduxjs/toolkit";
 
-/** <b>初始化主题</b> */
-function initTheme() {
-    if (window.matchMedia('(prefers-color-scheme)').media === 'not all') {
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            return lightTheme;
-        } else {
-            return darkTheme;
-        }
-    } else {
-        const prevTheme = localStorage.getItem("theme");
-        if (prevTheme !== null && prevTheme !== "") {
-            return prevTheme === "light" ? lightTheme : darkTheme;
-        } else {
-            return lightTheme;
-        }
-    }
+/** <h2>初始化主题</h2>
+ * @description 返回主题模式
+ * @return {string} 返回 “light” 或 "dark"
+ */
+function getInitThemeMode(): "light" | "dark" {
+  console.log("🎨 Initializing the site theme...");
+  const prevTheme = localStorage.getItem("themeMode");
+  return ["light", "dark"].includes(prevTheme) ? prevTheme : (
+    prevTheme === "auto" ?
+      (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark") : "light"
+  );
 }
 
-const themeMedia = window.matchMedia("(prefers-color-scheme: light)");
-let osTheme = themeMedia.matches ? lightTheme : darkTheme;
-themeMedia.addEventListener("change", (e) => {
-    if (e.matches) {
-        // console.log('OS: light');
-        osTheme = lightTheme;
-    } else {
-        // console.log('OS: dark');
-        osTheme = darkTheme;
-    }
-});
-
 export const themeStateSlice = createSlice({
-    name: "theme",
-    initialState: {
-        theme: initTheme(),
+  name: "theme",
+  initialState: {
+    theme: getInitThemeMode(),
+  },
+  reducers: {
+    changeToLightTheme: (state) => {
+      state.theme = "light";
+      localStorage.setItem("themeMode", "light");
+      console.log("🌞 theme mode: light");
     },
-    reducers: {
-        changeToLightTheme: (state) => {
-            state.theme = lightTheme;
-            localStorage.setItem("theme", "light");
-        },
-        changeToDarkTheme: (state) => {
-            state.theme = darkTheme;
-            localStorage.setItem("theme", "dark");
-        },
-        syncWithOSTheme: (state) => {
-            state.theme = osTheme;
-            localStorage.setItem("theme", osTheme.palette.mode);
-        }
+    changeToDarkTheme: (state) => {
+      state.theme = "dark";
+      localStorage.setItem("themeMode", "dark");
+      console.log("🌛 theme mode: dark");
     },
+    syncWithOSTheme: (state, action) => {
+      state.theme = action.payload;
+      localStorage.setItem("themeMode", "auto");
+      console.log("🖥️ theme mode: auto");
+    }
+  },
 });
 
 export const {changeToLightTheme, changeToDarkTheme, syncWithOSTheme} = themeStateSlice.actions;

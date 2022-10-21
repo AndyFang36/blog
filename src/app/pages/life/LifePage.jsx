@@ -1,6 +1,6 @@
 import {Box, Container, Divider, Link as Anchor, Paper, Typography} from "@mui/material";
 import "../../../assets/styles/LifePage.css";
-import {MuiPaper} from "../../../common/components/MuiPaper";
+import {MuiPaper} from "../../../common/components/mui/MuiPaper";
 import {useEffect, useState} from "react";
 
 export default function LifePage() {

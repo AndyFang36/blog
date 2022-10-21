@@ -1,9 +1,15 @@
-import {Box, IconButton, List, ListItem, ListItemIcon, ListItemText, Menu, MenuItem} from "@mui/material";
+import {IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip, IconButtonProps} from "@mui/material";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Brightness4, Brightness7, DesktopMac} from "@mui/icons-material";
 import {changeToDarkTheme, changeToLightTheme, syncWithOSTheme} from "./themeStateSlice";
-import "./ThemeToggle.css";
+
+// const MuiMenuItem = styled(props => <MenuItem {...props}/>)(({theme}) => ({
+//   // backgroundColor: theme.palette.background.default,
+//   // "&.Mui-selected": {backgroundColor: theme.palette.background.paper},
+//   // "&.Mui-selected:hover": {backgroundColor: theme.palette.background.paper},
+//   // "&:hover": {backgroundColor: theme.palette.background.paper}
+// }));
 
 const options = [
   {name: "亮色主题", icon: <Brightness7/>},
@@ -11,89 +17,82 @@ const options = [
   {name: "跟随系统", icon: <DesktopMac/>},
 ];
 
-export const ThemeToggle = () => {
+interface ThemeToggleProp extends IconButtonProps {
+  title?: string,
+  arrow?: boolean,
+}
+
+export const ThemeToggle = (props: ThemeToggleProp) => {
+  const {title = "切换主题", arrow = false, size, ...others} = props;
   const theme = useSelector(state => state["themeToggle"]["theme"]);
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedOption, setSelectedOption] = useState(0);
+  const themeMedia = window.matchMedia("(prefers-color-scheme: light)");
 
-  const open = Boolean(anchorEl);
-
-  useEffect(() => {
-    theme.mode === "light" ? setSelectedOption(0) : setSelectedOption(1);
-  }, [theme.mode]);
-
-  const handleClickListItem = (event) => {
-    setAnchorEl(event.currentTarget);
+  const openMenu = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+  const closeMenu = () => {
+    setAnchorEl(null);
   };
 
-  const handleMenuItemClick = (e, index) => {
+  const syncWithOS = (e: MediaQueryList | MediaQueryListEvent): void => {
+    console.info(e);
+    dispatch(syncWithOSTheme(e.matches ? "light" : "dark"));
+  };
+  const selectTheme = (index) => () => {
     setSelectedOption(index);
     setAnchorEl(null);
-
     switch (index) {
       case 0:
+        themeMedia.removeEventListener("change", syncWithOS);
         dispatch(changeToLightTheme());
         break;
       case 1:
+        themeMedia.removeEventListener("change", syncWithOS);
         dispatch(changeToDarkTheme());
         break;
       case 2:
         if (window.matchMedia("(prefers-color-scheme)").media === "not all") {
-          alert("当前浏览器不支持亮暗主题切换！");
-          break;
+          alert("⚠ 当前浏览器不支持亮暗主题切换！");
         } else {
-          dispatch(syncWithOSTheme());
-          break;
+          syncWithOS(themeMedia);
+          themeMedia.addEventListener("change", syncWithOS);
         }
+        break;
       default:
         console.error("选择主题出错");
+        break;
     }
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  useEffect(() => {
+    const localTheme = localStorage.getItem("themeMode");
+    localTheme === "auto" ? setSelectedOption(2) : (
+      theme === "light" ? setSelectedOption(0) : setSelectedOption(1)
+    );
+  }, [theme]);
 
-  return (
-    <IconButton id="ThemeToggle">
-      <List component="nav" disablePadding>
-        <ListItem
-          disablePadding
-          button
-          id="lock-button"
-          aria-haspopup="listbox"
-          aria-controls="lock-menu"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClickListItem}
-        >
-          <ListItemText primary={options[selectedOption].icon}/>
-        </ListItem>
-      </List>
-      <Menu
-        id="lock-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{"aria-labelledby": "lock-button", role: "listbox"}}
-      >
-        {options.map((option, index) => (
-          <MenuItem
-            key={"option-" + option.name}
-            selected={index === selectedOption}
-            onClick={(e) => handleMenuItemClick(e, index)}
-            sx={[
-              {backgroundColor: theme.palette.background.default},
-              {"&.Mui-selected": {backgroundColor: theme.palette.background.secondary}},
-              {"&.Mui-selected:hover": {backgroundColor: theme.palette.background.secondary}},
-              {"&:hover": {backgroundColor: theme.palette.background.secondary}},
-            ]}
-          >
-            <ListItemIcon>{option.icon}</ListItemIcon>
-            <ListItemText>{option.name}</ListItemText>
-          </MenuItem>
-        ))}
-      </Menu>
-    </IconButton>
-  );
+  return <>
+    <Tooltip title={title} arrow={arrow}>
+      <IconButton id="ThemeToggle" onClick={openMenu} size={size} {...others}>
+        {options[selectedOption].icon}
+      </IconButton>
+    </Tooltip>
+    <Menu
+      id="ThemeMenu"
+      anchorEl={anchorEl}
+      open={Boolean(anchorEl)}
+      onClose={closeMenu}
+      MenuListProps={{"aria-describedby": "theme menu", role: "menu"}}
+    >
+      {options.map((option, index) => (
+        <MenuItem key={`option-${option.name}`} selected={index === selectedOption} onClick={selectTheme(index)}>
+          <ListItemIcon>{option.icon}</ListItemIcon>
+          <ListItemText>{option.name}</ListItemText>
+        </MenuItem>
+      ))}
+    </Menu>
+  </>;
 };

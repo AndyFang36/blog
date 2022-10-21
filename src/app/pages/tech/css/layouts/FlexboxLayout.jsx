@@ -1,16 +1,20 @@
-import {Box, Button, Card, CardHeader, Collapse, Divider, FormControl, FormControlLabel, IconButton, Radio, RadioGroup, Stack, TextField, Toolbar, Typography} from "@mui/material";
+import {Box, Button, Card, CardHeader, Collapse, Divider, FormControl, FormControlLabel, FormLabel, IconButton, Radio, RadioGroup, Stack, TextField, Toolbar, Tooltip, Typography, useTheme} from "@mui/material";
 import {useState} from "react";
 import {Add, Code as CodeIcon, CodeOff as CodeOffIcon, ContentCopy, Info as InfoIcon, Menu, Remove} from "@mui/icons-material";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {atomOneLight, atomOneDark} from "react-syntax-highlighter/dist/esm/styles/hljs";
 import {openAlert} from "../../../../../features/alertStateSlice";
-import MyFormLabel from "../../../../../common/components/MyFormLabel";
-import MyTooltip from "../../../../../common/components/MyTooltip";
+
+const titles = {
+  flexBasis: "The flex-basis CSS property sets the initial main size of a flex item.",
+  flexGrow: "The flex-grow CSS property sets the flex grow factor of a flex item's main size.",
+  order: "The order CSS property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending order value and then by their source code order."
+};
 
 export default function FlexboxLayout() {
   const dispatch = useDispatch();
-  const theme = useSelector(state => state["themeToggle"]["theme"]);
+  const theme = useTheme();
   const initStyle = {
     container: {
       height: {xs: "6rem", xl: "20rem"},
@@ -132,7 +136,7 @@ export default function FlexboxLayout() {
           <Divider/>
           <Stack className="property" spacing={1} height="30rem" style={{overflowY: "auto"}}>
             <Stack direction="row" alignItems="center">
-              <MyFormLabel>盒子数量：</MyFormLabel>
+              <FormLabel>盒子数量：</FormLabel>
               <IconButton onClick={decrease} disabled={count === 1}><Remove color="warning"/></IconButton>
               <Typography variant="h5">{count}</Typography>
               <IconButton onClick={increase} disabled={count === 7}><Add color="success"/></IconButton>
@@ -141,12 +145,12 @@ export default function FlexboxLayout() {
               <legend>Box Style</legend>
               <Stack>
                 <FormControl>
-                  <MyFormLabel>
+                  <FormLabel style={{display: "flex", alignItems: "center", columnGap: 1}}>
                     <label>flex-basis</label>
-                    <MyTooltip title="The flex-basis CSS property sets the initial main size of a flex item.">
-                      <InfoIcon/>
-                    </MyTooltip>
-                  </MyFormLabel>
+                    <Tooltip title={titles.flexBasis} arrow>
+                      <InfoIcon fontSize="small"/>
+                    </Tooltip>
+                  </FormLabel>
                   <RadioGroup
                     row
                     name="flex-basis"
@@ -163,12 +167,12 @@ export default function FlexboxLayout() {
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
-                  <MyFormLabel>
+                  <FormLabel style={{display: "flex", alignItems: "center", columnGap: 1}}>
                     <label>flex-grow</label>
-                    <MyTooltip title="The flex-grow CSS property sets the flex grow factor of a flex item's main size.">
-                      <InfoIcon/>
-                    </MyTooltip>
-                  </MyFormLabel>
+                    <Tooltip title={titles.flexGrow} arrow>
+                      <InfoIcon fontSize="small"/>
+                    </Tooltip>
+                  </FormLabel>
                   <RadioGroup
                     row
                     name="flex-grow"
@@ -183,12 +187,12 @@ export default function FlexboxLayout() {
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
-                  <MyFormLabel>
+                  <FormLabel style={{display: "flex", alignItems: "center"}}>
                     <label>order</label>
-                    <MyTooltip title="The order CSS property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending order value and then by their source code order.">
-                      <InfoIcon/>
-                    </MyTooltip>
-                  </MyFormLabel>
+                    <Tooltip title={titles.order} arrow>
+                      <InfoIcon fontSize="small"/>
+                    </Tooltip>
+                  </FormLabel>
                   <RadioGroup
                     row
                     name="order"
@@ -208,7 +212,7 @@ export default function FlexboxLayout() {
               <legend>Container Style</legend>
               <Stack>
                 <FormControl>
-                  <MyFormLabel>flex-direction</MyFormLabel>
+                  <FormLabel>flex-direction</FormLabel>
                   <RadioGroup
                     row
                     name="flex-direction"
@@ -222,7 +226,7 @@ export default function FlexboxLayout() {
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
-                  <MyFormLabel>flex-wrap</MyFormLabel>
+                  <FormLabel>flex-wrap</FormLabel>
                   <RadioGroup
                     row
                     name="flex-wrap"
@@ -235,7 +239,7 @@ export default function FlexboxLayout() {
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
-                  <MyFormLabel>justify-content</MyFormLabel>
+                  <FormLabel>justify-content</FormLabel>
                   <RadioGroup
                     row
                     name="justify-content"
@@ -259,7 +263,7 @@ export default function FlexboxLayout() {
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
-                  <MyFormLabel>align-content</MyFormLabel>
+                  <FormLabel>align-content</FormLabel>
                   <RadioGroup
                     row
                     name="align-items"
@@ -274,7 +278,7 @@ export default function FlexboxLayout() {
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
-                  <MyFormLabel>row-gap</MyFormLabel>
+                  <FormLabel>row-gap</FormLabel>
                   <RadioGroup
                     row
                     name="row-gap"
@@ -287,7 +291,7 @@ export default function FlexboxLayout() {
                   </RadioGroup>
                 </FormControl>
                 <FormControl>
-                  <MyFormLabel>column-gap</MyFormLabel>
+                  <FormLabel>column-gap</FormLabel>
                   <RadioGroup
                     row
                     name="column-gap"
@@ -314,7 +318,7 @@ export default function FlexboxLayout() {
           <Collapse in={open.demo1} timeout="auto" unmountOnExit>
             <SyntaxHighlighter
               language="css"
-              style={theme.codeBlock}
+              style={theme.palette.mode === "light" ? atomOneLight : atomOneDark}
               showLineNumbers={true}
               wrapLongLines={true}
             >

@@ -1,22 +1,23 @@
 import {useDispatch, useSelector} from "react-redux";
 import {Header, Main, Footer} from "./containers";
-import {Alert, Box, Snackbar} from "@mui/material";
+import {Alert, Box, CssBaseline, Snackbar, ThemeProvider, useTheme} from "@mui/material";
 import ScrollToTop from "react-scroll-to-top";
 import {ArrowUpward} from "@mui/icons-material";
 import {closeAlert} from "../features/alertStateSlice";
-import "../assets/styles/App.css";
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import PullToRefresh from "pulltorefreshjs";
-import {showDevicePixelRatio, showWidthAndHeight} from "../common/utils/infoUtil";
+import {lightTheme, darkTheme} from "../assets/themes";
+import "../assets/styles/App.css";
 
-export const App = () => {
+function App() {
+  const theme = useTheme();
   const location = useLocation();
-  const theme = useSelector(state => state["themeToggle"]["theme"]);
-  const {open, severity, message} = useSelector(state => state["alertState"]["alert"]);
   const dispatch = useDispatch();
+  const {open, severity, message} = useSelector(state => state["alertState"]["alert"]);
 
   useEffect(() => {
+    console.log(`🎉 App loaded!\n${new Date().toTimeString()}`)
     const controller = new AbortController();
     // let imagesToLoad = document.querySelectorAll("img[data-src]");
     // imagesToLoad.forEach(img => {
@@ -27,23 +28,22 @@ export const App = () => {
     // });
     // return () => controller.abort();
     // 媒体查询
-    showDevicePixelRatio();
-    window.addEventListener("resize", e => {
-        showWidthAndHeight();
-        window.matchMedia(`(width: 320px)`).matches ?
-          console.log(`🟢(width: 320px) matched!`) :
-          console.log(`🔵width: ${window.innerWidth}px`);
-        window.matchMedia(`(height: 568px)`).matches ?
-          console.log(`🟢(height: 568px) matched!`) :
-          console.log(`🔵height: ${window.innerHeight}px`);
+    // showDevicePixelRatio();
+    window.addEventListener("resize", () => {
+/*        showWidthAndHeight();
+        console.log(
+          window.matchMedia(`(width: 320px)`).matches ?
+            `🟢(width: 320px) matched!` : `🔵width: ${window.innerWidth}px`
+        );
+        console.log(
+          window.matchMedia(`(height: 568px)`).matches ?
+            `🟢(height: 568px) matched!` : `🔵height: ${window.innerHeight}px`
+        );*/
       },
       {signal: controller.signal}
     );
     // 下拉刷新
-    PullToRefresh.init({
-      mainElement: "body",
-      onRefresh() {window.location.reload();}
-    });
+    PullToRefresh.init({mainElement: "body", onRefresh() {window.location.reload();}});
     return () => {
       PullToRefresh.destroyAll();
       controller.abort();
@@ -56,8 +56,8 @@ export const App = () => {
       sx={{
         position: "relative",
         color: theme.palette.text.primary,
-        backgroundImage: theme.mode === "light" ?
-          "linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)" : "linear-gradient(to top right, #434343 0%, black 100%)",
+        // backgroundImage: theme.palette.mode === "light" ?
+        //   "linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)" : "linear-gradient(to top right, #434343 0%, black 100%)",
       }}
     >
       <Header/>
@@ -69,10 +69,10 @@ export const App = () => {
         style={{
           width: `3rem`,
           height: `3rem`,
-          display:"flex",
-          justifyContent:`center`,
+          display: "flex",
+          justifyContent: `center`,
           alignItems: `center`,
-          backgroundColor: theme.palette.primary,
+          backgroundColor: theme.palette.primary.main,
         }}
       />
       <Snackbar id="MuiAlert" open={open} autoHideDuration={5000} onClose={() => dispatch(closeAlert())}>
@@ -81,5 +81,20 @@ export const App = () => {
         </Alert>
       </Snackbar>
     </Box>
+  );
+}
+
+export default function ThemedApp() {
+  const theme = useSelector(state => state["themeToggle"]["theme"]);
+
+  return (
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      {/*
+        Switching between "light" and "dark" modes of native components such as scrollbar,
+        using the `color-scheme` CSS property.
+      */}
+      <CssBaseline enableColorScheme={true}/>
+      <App/>
+    </ThemeProvider>
   );
 };

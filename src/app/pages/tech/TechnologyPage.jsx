@@ -1,10 +1,16 @@
+import {
+  Box, Breadcrumbs,
+  Card, CardActions, CardContent, CardHeader, Container,
+  Divider,
+  Grid,
+  IconButton, Skeleton,
+  Toolbar, Typography,
+  useTheme
+} from "@mui/material";
 import {BugReport, Grain, Home, Share as ShareIcon, ThumbDown as ThumbDownIcon, ThumbUp as ThumbUpIcon, Whatshot} from "@mui/icons-material";
-import {Box, Breadcrumbs, Card, CardActions, CardContent, CardHeader, Container, Divider, Grid, IconButton, Skeleton, Toolbar, Typography} from "@mui/material";
 import {Link, Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {Sidebar} from "./Sidebar";
 import {useEffect, useRef, useState, Suspense} from "react";
-import {Clock} from "../../../common/components/clock/Clock";
-import {useSelector} from "react-redux";
 import TechIntroPage from "./TechIntroPage";
 import ReactIntroPage from "./react/ReactIntroPage";
 import {CallbackHook, EffectHook, MemoHook} from "./react/hooks";
@@ -16,7 +22,7 @@ import {FlexboxLayout, GridLayout, TableLayout} from "./css/layouts";
 import {StateUpdating} from "./react/core";
 import {HeightCompare} from "./js/apis";
 import myAxios from "../../../common/utils/myAxios";
-import MuiCard from "../../../common/components/MuiCard";
+import MuiCard from "../../../common/components/mui/MuiCard";
 import IndexedCollections from "./js/core/IndexedCollections";
 import "../../../assets/styles/TechnologyPage.css";
 import WeatherAPI from "./other/WeatherAPI";
@@ -24,7 +30,7 @@ import PackageFile from "./nodejs/PackageFile";
 import EmbeddedContent from "./html/elements/EmbeddedContent";
 
 export default function TechnologyPage() {
-  const theme = useSelector(state => state["themeToggle"]["theme"]);
+  const theme = useTheme();
   const styles = {
     card: {
       color: theme.palette.text.secondary,

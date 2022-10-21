@@ -1,9 +1,8 @@
-import {Paper} from "@mui/material";
-import {useSelector} from "react-redux";
+import {Paper, useTheme} from "@mui/material";
 
 export const MuiPaper = (props) => {
   const {children, sx, ...others} = props;
-  const theme = useSelector(state => state["themeToggle"]["theme"]);
+  const theme = useTheme();
 
   return (
     <Paper sx={{color: theme.palette.text.primary, backgroundColor: theme.palette.background.paper, ...sx}} {...others}>

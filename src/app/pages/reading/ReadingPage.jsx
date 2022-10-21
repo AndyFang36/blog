@@ -1,7 +1,7 @@
 import {Box, Container, Typography} from "@mui/material";
 import ReadingImg from "../../../assets/images/bg/reading.png";
 import "../../../assets/styles/ReadingPage.css";
-import {MuiPaper} from "../../../common/components/MuiPaper";
+import {MuiPaper} from "../../../common/components/mui/MuiPaper";
 import PrideAndPrejudice from "../../../assets/books/Pride and Prejudice.pdf";
 
 export const ReadingPage = () => {

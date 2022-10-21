@@ -3,9 +3,8 @@ import {StrictMode} from "react";
 import {Provider} from "react-redux";
 import {store} from "./app/store";
 import {BrowserRouter} from "react-router-dom";
-import {ScrollToTop} from "./common/components/ScrollToTop";
-import {CssBaseline} from "@mui/material";
-import {App} from "./app/App";
+import {RouteToTop} from "./common/components/RouteToTop";
+import App from "./app/App";
 import AOS from "aos";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
@@ -14,7 +13,7 @@ import "aos/dist/aos.css";
 import "./assets/styles/tuesday.css";
 
 if (typeof window["__REACT_DEVTOOLS_GLOBAL_HOOK__"] === "object") {
-  window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {};
+  window["__REACT_DEVTOOLS_GLOBAL_HOOK__"].inject = function () {};
 }
 
 AOS.init({
@@ -41,15 +40,19 @@ ReactDOM.createRoot(document.getElementById("Root")).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <ScrollToTop>
-          <CssBaseline>
-            <App/>
-          </CssBaseline>
-        </ScrollToTop>
+        <RouteToTop>
+          <App/>
+        </RouteToTop>
       </BrowserRouter>
     </Provider>
   </StrictMode>
 );
+
+window.addEventListener("load", ()=>console.log("window load"))
+window.addEventListener("beforeunload", ()=>console.log("window beforeunload"))
+window.addEventListener("unload", ()=>console.log("window unload"))
+document.addEventListener("loadstart", ()=>console.log("doc load start."))
+document.addEventListener("DOMContentLoaded", ()=>console.log("DOM content loaded."))
 
 serviceWorkerRegistration.register();
 

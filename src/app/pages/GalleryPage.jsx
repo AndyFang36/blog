@@ -10,7 +10,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "../../assets/styles/GalleryPage.css";
-import {MuiPaper} from "../../common/components/MuiPaper";
+import {MuiPaper} from "../../common/components/mui/MuiPaper";
 
 const itemData = [
   {
