@@ -43,7 +43,7 @@ function App() {
       {signal: controller.signal}
     );
     // 下拉刷新
-    PullToRefresh.init({mainElement: "body", onRefresh() {window.location.reload();}});
+    PullToRefresh.init({mainElement: "body", onRefresh() {window.location.reload()}});
     return () => {
       PullToRefresh.destroyAll();
       controller.abort();

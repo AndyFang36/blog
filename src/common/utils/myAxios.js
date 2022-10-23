@@ -21,14 +21,14 @@ myAxios.interceptors.request.use(
 // 添加响应拦截器
 myAxios.interceptors.response.use(
   response => {
-    console.log("🟢请求成功！");
-    console.log(response);
+    console.log(`🟢 请求成功！\n🕖 ${new Date().toTimeString()}`);
+    console.info(response);
     return response;
   },
   error => {
     switch (error.response.status) {
       case 403:
-        console.warn("🔴登录已过期！");
+        console.warn("🔴 登录已过期！");
         localStorage.removeItem("token");
         window.location.assign("/login");
         break;
@@ -36,7 +36,7 @@ myAxios.interceptors.response.use(
         //window.location.assign("/not-found");
         break;
       default:
-        console.error("🔴响应错误！");
+        console.error("🔴 响应错误！");
         break;
     }
     return Promise.reject(error);

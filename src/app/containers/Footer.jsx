@@ -12,30 +12,35 @@ import {
   Divider,
   Stack,
   TextField, Typography,
-  Link as MuiLink
+  Link as MuiLink,
 } from "@mui/material";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import "../../assets/styles/Footer.css";
+import myAxios from "../../common/utils/myAxios";
 
 export const Footer = () => {
   const [options, setOptions] = useState([]);
   const [value, setValue] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [ip, setIp] = useState(null);
 
-  useEffect(()=>console.log("Footer loaded."),[])
+  useEffect(() => {
+    console.log("Footer loaded.");
+    myAxios.get("http://ip-api.com/json/?lang=zh-CN").then(response => {setIp(response.data);});
+  }, []);
 
   return (
     <Box pt={2} pb={2} id="Footer" component="footer">
       <Container maxWidth={false} id="FooterContainer">
         <Stack justifyItems="center">
           <Typography variant="h4" align="center">
-            <Link to="/blog">Andyの博客</Link>
+            <Link to="/blog/">Andyの博客</Link>
           </Typography>
           <Stack direction={{xs: "column", xl: "row"}} columnGap={5} rowGap={1} justifyContent="center" alignItems="center">
-            <Link to="/blog">首页</Link>
+            <Link to="/blog/">首页</Link>
             <Link to="/blog/tech">技术分享</Link>
-            <Link to="/blog/utilities">在线工具</Link>
+            <Link to="/blog/utilities/">在线工具</Link>
             <Link to="/blog/life">日常生活</Link>
             <Link to="/blog/reading">我的书屋</Link>
             <Link to="/blog/gallery">照片墙</Link>
@@ -94,6 +99,9 @@ export const Footer = () => {
             <small>
               Copyright &copy; 2022 <MuiLink href="https://github.com/AndyFang36">Andy Fang</MuiLink>. All Rights Reserved.
             </small>
+          </Typography>
+          <Typography>
+            {ip === null ? "" : `IP: ${ip["query"]}, Location: ${ip["city"]}, ${ip["regionName"]}, ${ip["country"]}`}
           </Typography>
         </Stack>
       </Container>

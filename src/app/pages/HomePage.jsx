@@ -11,12 +11,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "../../assets/styles/HomePage.css";
-import {useSelector} from "react-redux";
 
 function SwiperSlideItem({title, num, ...others}) {
   return (
     <Box className={`swiper-slide-item item-${num}`} {...others}>
-      <Typography maxWidth="80%" variant="h3" sx={{color: "rgba(255, 255, 255, 85%)"}}>{title}</Typography>
+      <Typography maxWidth="80%" variant="h1" sx={{color: "rgba(255, 255, 255, 90%)"}}>{title}</Typography>
     </Box>
   );
 }

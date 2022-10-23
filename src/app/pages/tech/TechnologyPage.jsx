@@ -3,11 +3,11 @@ import {
   Card, CardActions, CardContent, CardHeader, Container,
   Divider,
   Grid,
-  IconButton, Skeleton,
+  IconButton, Skeleton, Stack,
   Toolbar, Typography,
-  useTheme
+  useTheme,
 } from "@mui/material";
-import {BugReport, Grain, Home, Share as ShareIcon, ThumbDown as ThumbDownIcon, ThumbUp as ThumbUpIcon, Whatshot} from "@mui/icons-material";
+import {BugReport, Grain, Home, Refresh, Share as ShareIcon, ThumbDown as ThumbDownIcon, ThumbUp as ThumbUpIcon, Whatshot} from "@mui/icons-material";
 import {Link, Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {Sidebar} from "./Sidebar";
 import {useEffect, useRef, useState, Suspense} from "react";
@@ -22,48 +22,142 @@ import {FlexboxLayout, GridLayout, TableLayout} from "./css/layouts";
 import {StateUpdating} from "./react/core";
 import {HeightCompare} from "./js/apis";
 import myAxios from "../../../common/utils/myAxios";
-import MuiCard from "../../../common/components/mui/MuiCard";
 import IndexedCollections from "./js/core/IndexedCollections";
 import "../../../assets/styles/TechnologyPage.css";
 import WeatherAPI from "./other/WeatherAPI";
 import PackageFile from "./nodejs/PackageFile";
 import EmbeddedContent from "./html/elements/EmbeddedContent";
+import {Clock} from "../../../common/components/clock/Clock";
+import ColorfulPixelClock from "../../../common/components/clock/ColorfulPixelClock";
+
+/** <h2>天气现象表</h2>
+ * 晴
+ * 少云
+ * 晴间多云
+ * 多云
+ * 阴
+ * 有风
+ * 平静
+ * 微风
+ * 和风
+ * 清风
+ * 强风/劲风
+ * 疾风
+ * 大风
+ * 烈风
+ * 风暴
+ * 狂爆风
+ * 飓风
+ * 热带风暴
+ * 霾
+ * 中度霾
+ * 重度霾
+ * 严重霾
+ * 阵雨
+ * 雷阵雨
+ * 雷阵雨并伴有冰雹
+ * 小雨
+ * 中雨
+ * 大雨
+ * 暴雨
+ * 大暴雨
+ * 特大暴雨
+ * 强阵雨
+ * 强雷阵雨
+ * 极端降雨
+ * 毛毛雨/细雨
+ * 雨
+ * 小雨-中雨
+ * 中雨-大雨
+ * 大雨-暴雨
+ * 暴雨-大暴雨
+ * 大暴雨-特大暴雨
+ * 雨雪天气
+ * 雨夹雪
+ * 阵雨夹雪
+ * 冻雨
+ * 雪
+ * 阵雪
+ * 小雪
+ * 中雪
+ * 大雪
+ * 暴雪
+ * 小雪-中雪
+ * 中雪-大雪
+ * 大雪-暴雪
+ * 浮尘
+ * 扬沙
+ * 沙尘暴
+ * 强沙尘暴
+ * 龙卷风
+ * 雾
+ * 浓雾
+ * 强浓雾
+ * 轻雾
+ * 大雾
+ * 特强浓雾
+ * 热
+ * 冷
+ * 未知 */
+const weatherMap = new Map([
+  ["晴", {name: "晴", icon: "☀"}],
+  ["多云", {name: "多云", icon: "🌥"}],
+  ["大雨", {name: "大雨", icon: "🌧"}],
+  ["雷阵雨", {name: "雷阵雨", icon: "⛈"}],
+  ["雾", {name: "雾", icon: "🌫"}],
+]);
 
 export default function TechnologyPage() {
   const theme = useTheme();
-  const styles = {
-    card: {
-      color: theme.palette.text.secondary,
-      backgroundColor: theme.palette.background.paper
-    }
-  };
+
   const gridEl = useRef(null);
   const [loading, setLoading] = useState(true);
   const [width, setWidth] = useState(0);
-  const [weather, setWeather] = useState(null);
+  const [result, setResult] = useState(null);
+  const [date, setDate] = useState("");
+
+  const getResult = async () => {
+    return myAxios({
+      method: "GET",
+      url: "https://restapi.amap.com/v3/weather/weatherInfo",
+      params: {key: "b2b5555c7a6df9c845f204275b9804ca", city: 330110, extensions: "base"},
+    });
+  };
+
+  const update = () => {
+    getResult().then(response => setResult(response.data));
+  };
 
   useEffect(() => {
     const controller = new AbortController();
+    console.log("📑 Tech Page!");
     document.title = "技术分享 - Andyの博客";
+    setLoading(true);
+    /* update date */
+    const updateDate = () => {
+      setDate(new Date().toLocaleDateString());
+    };
+    updateDate();
+    const dateInterval = setInterval(updateDate, 1000);
+    /* update weather */
     const updateWeather = () => {
-      myAxios({
-        method: "GET",
-        url: "https://restapi.amap.com/v3/weather/weatherInfo",
-        params: {key: "b2b5555c7a6df9c845f204275b9804ca", city: 330110, extensions: "base"}
-      }).then(response => setWeather(response.data));
+      getResult().then(response => setResult(response.data));
     };
     updateWeather();
-    setInterval(updateWeather, 15 * 60 * 1000);
+    const weatherInterval = setInterval(updateWeather, 15 * 60 * 1000);
     /* dynamic width */
-    setLoading(true);
     setWidth(gridEl.current.clientWidth * 17 / 100);
     window.addEventListener(
       "resize",
       () => setWidth(gridEl.current.clientWidth * 17 / 100),
-      {signal: controller.signal}
+      {signal: controller.signal},
     );
-    setLoading(false)
-    return () => controller.abort();
+    setLoading(false);
+    return () => {
+      clearInterval(dateInterval);
+      clearInterval(weatherInterval);
+      controller.abort();
+    };
   }, []);
 
   return (
@@ -73,7 +167,7 @@ export default function TechnologyPage() {
           <Grid item xs={0} sm={0} md={17} lg={17} xl={17} display={{xs: "none", md: "block"}}>
             {loading ?
               new Array(10).fill(0).map((v, i) =>
-                <Skeleton key={"skeleton" + i} animation="wave" width="100%" height="5rem"/>
+                <Skeleton key={"skeleton" + i} animation="wave" width="100%" height="5rem"/>,
               )
               :
               <Sidebar id="Sidebar" width={width}/>
@@ -83,7 +177,7 @@ export default function TechnologyPage() {
           <Grid item xs={100} sm={100} md={82} lg={82} xl={82}>
             <Grid container columns={82} spacing={{xs: 1, sm: 2, md: 0}}>
               <Grid item xs={82} sm={82} md={63} lg={63} xl={63}>
-                <Card style={styles.card}>
+                <Card>
                   <CardHeader/>
                   <CardContent>
                     <Breadcrumbs aria-label="breadcrumb">
@@ -163,7 +257,7 @@ export default function TechnologyPage() {
                     </Box>
                   </CardContent>
                   <CardActions>
-                    <Toolbar style={{width:"100%", justifyContent:"end", columnGap:"1%"}}>
+                    <Toolbar style={{width: "100%", justifyContent: "end", columnGap: "1%"}}>
                       <IconButton title="支持"><ThumbUpIcon/></IconButton>
                       <IconButton title="反对"><ThumbDownIcon/></IconButton>
                       <IconButton title="分享"><ShareIcon/></IconButton>
@@ -173,21 +267,39 @@ export default function TechnologyPage() {
                 </Card>
               </Grid>
               <Grid item xs={0} sm={0} md={1} lg={1} xl={1}/>
-              <Grid item xs={82} sm={82} md={18} lg={18} xl={18}>
-                <Card style={styles.card}>
-                  <CardContent>{/*<Clock/>*/}</CardContent>
-                </Card>
-                <MuiCard>
+              <Grid item xs={82} sm={82} md={18} lg={18} xl={18} display="flex" rowGap={2} flexDirection="column">
+                <Card id="DatetimeCard" style={{minHeight:"15rem"}}>
                   <CardContent>
-                    <Typography variant="h6">实时天气</Typography>
-                    <pre>
-                      <code>
-                        {JSON.stringify(weather, null, 2)}
-                      </code>
-                    </pre>
+                    <Typography variant="h6" align="right">{date}</Typography>
+                    <Divider sx={{mb:2}}/>
+                    <ColorfulPixelClock/>
                   </CardContent>
-                </MuiCard>
-                <Card></Card>
+                </Card>
+                <Card id="WeatherCard">
+                  <CardContent>
+                    <Typography variant="h6">
+                      {result === null ? "***" : `${result["lives"][0]["province"]}省${result["lives"][0]["city"]}`}
+                      实时天气 <IconButton color="success" onClick={update}><Refresh/></IconButton>
+                    </Typography>
+                    {result === null ? "loading" :
+                      <Stack direction="row" columnGap={2} justifyContent="center" alignItems="center">
+                        <Typography variant="h5">{result["lives"][0]["weather"]}</Typography>
+                        <Typography variant="h1" color="orange">
+                          {weatherMap.get(result["lives"][0]["weather"]).icon}
+                        </Typography>
+                        <Typography variant="h5">{result["lives"][0]["temperature"]}℃</Typography>
+                      </Stack>
+                    }
+                    {/*<pre>
+                      <code>
+                        {JSON.stringify(result, null, 2)}
+                      </code>
+                    </pre>*/}
+                  </CardContent>
+                </Card>
+                <Card>
+
+                </Card>
                 <Card></Card>
               </Grid>
             </Grid>

@@ -4,7 +4,7 @@ import {createSlice} from "@reduxjs/toolkit";
  * @description 返回主题模式
  * @return {string} 返回 “light” 或 "dark"
  */
-function getInitThemeMode(): "light" | "dark" {
+function getInitTheme(): "light" | "dark" {
   console.log("🎨 Initializing the site theme...");
   const prevTheme = localStorage.getItem("themeMode");
   return ["light", "dark"].includes(prevTheme) ? prevTheme : (
@@ -16,7 +16,7 @@ function getInitThemeMode(): "light" | "dark" {
 export const themeStateSlice = createSlice({
   name: "theme",
   initialState: {
-    theme: getInitThemeMode(),
+    theme: getInitTheme(),
   },
   reducers: {
     changeToLightTheme: (state) => {

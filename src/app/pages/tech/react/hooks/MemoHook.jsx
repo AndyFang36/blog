@@ -19,7 +19,7 @@ const Demo1 = () => {
   return (
     <Box className="demo">
       <Typography variant="h2">📌 Demo 1: Without <code>useMemo</code></Typography>
-      <Typography>Factorial of<input type="number" value={number} onChange={onChange}/>is {factorial}</Typography>
+      <Typography>Factorial of <input type="number" value={number} onChange={onChange}/> is {factorial}</Typography>
       <button onClick={onClick}>Re-render</button>: {i}
     </Box>
   );
@@ -38,7 +38,7 @@ const Demo2 = () => {
   return (
     <Box className="demo">
       <Typography variant="h2">📌 Demo 2: With <code>useMemo</code></Typography>
-      <Typography>Factorial of<input type="number" value={number} onChange={onChange}/>is {factorial}</Typography>
+      <Typography>Factorial of <input type="number" value={number} onChange={onChange}/> is {factorial}</Typography>
       <button onClick={onClick}>Re-render</button>: {i}
     </Box>
   );

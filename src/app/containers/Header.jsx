@@ -21,7 +21,7 @@ import "../../assets/styles/Header.css";
 import {ThemeToggle} from "../../features/theme-toggle/ThemeToggle";
 
 const pages = [
-  {name: "首页", path: "/blog"},
+  {name: "首页", path: "/blog/"},
   {name: "技术分享", path: "/blog/tech"},
   {name: "在线工具", path: "/blog/utilities"},
   {name: "生活日常", path: "/blog/life"},
@@ -34,7 +34,6 @@ const settings = ["个人资料", "我的账户", "后台管理", "退出登录"
 export const Header = () => {
   const theme = useTheme();
   const [scrolled, setScrolled] = useState(false);
-
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -70,15 +69,16 @@ export const Header = () => {
       position={scrolled ? "fixed" : "absolute"}
       style={{
         top: 0,
-        backgroundColor: scrolled ? "rgba(255,255,255, 0.25)" : "transparent",
+        backgroundColor: scrolled ?
+          (theme.palette.mode === "light" ? "rgba(255,255,255, 0.25)" : `rgba(0, 0, 0, 0.25)`) : "transparent",
         backdropFilter: scrolled ? "blur(3px)" : "none",
-        transition: "background-color 0.25s, box-shadow 0.25s, backdrop-filter 0.25s",
+        transition: "box-shadow 1s cubic-bezier(1,.24,.53,.58), backdrop-filter 1s cubic-bezier(1,.24,.53,.58)",
       }}
     >
       <Container maxWidth={false}>
         <Toolbar disableGutters>
           {/* desktop */}
-          <Link to="/blog" style={{color: "inherit"}}>
+          <Link to="/blog/" style={{color: "inherit"}}>
             <Typography
               className="site-name"
               variant="h4"
@@ -118,7 +118,7 @@ export const Header = () => {
             </Menu>
           </Box>
           {/* mobile */}
-          <Link to="/blog" style={{color: "inherit"}}>
+          <Link to="/blog/" style={{color: "inherit"}}>
             <Typography
               className="site-name"
               variant="h6"

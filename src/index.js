@@ -3,7 +3,7 @@ import {StrictMode} from "react";
 import {Provider} from "react-redux";
 import {store} from "./app/store";
 import {BrowserRouter} from "react-router-dom";
-import {RouteToTop} from "./common/components/RouteToTop";
+import {RouteToTop} from "./common/components/routes/RouteToTop";
 import App from "./app/App";
 import AOS from "aos";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
@@ -11,6 +11,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./assets/styles/index.css";
 import "aos/dist/aos.css";
 import "./assets/styles/tuesday.css";
+import Redirection from "./common/components/routes/Redirection";
 
 if (typeof window["__REACT_DEVTOOLS_GLOBAL_HOOK__"] === "object") {
   window["__REACT_DEVTOOLS_GLOBAL_HOOK__"].inject = function () {};
@@ -40,19 +41,28 @@ ReactDOM.createRoot(document.getElementById("Root")).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <RouteToTop>
-          <App/>
-        </RouteToTop>
+        <Redirection from={["", "/", "/blog"]} to="/blog/">
+          <RouteToTop>
+            <App/>
+          </RouteToTop>
+        </Redirection>
       </BrowserRouter>
     </Provider>
   </StrictMode>
 );
 
-window.addEventListener("load", ()=>console.log("window load"))
-window.addEventListener("beforeunload", ()=>console.log("window beforeunload"))
-window.addEventListener("unload", ()=>console.log("window unload"))
-document.addEventListener("loadstart", ()=>console.log("doc load start."))
-document.addEventListener("DOMContentLoaded", ()=>console.log("DOM content loaded."))
+window.addEventListener("load", () => console.log("window load"));
+window.addEventListener("beforeunload", () => console.log("window beforeunload"));
+/*
+* The `unload` event does not fire reliably and listening for it can prevent browser optimizations like the
+* Back-Forward Cache.
+* Use `pagehide` or `visibilitychange` events instead.
+*/
+// window.addEventListener("unload", ()=>console.log("window unload"))
+window.addEventListener("pagehide", () => console.log("page hide"));
+// window.addEventListener("visibilitychange", ()=>console.log("page visibility change"))
+document.addEventListener("loadstart", () => console.log("doc load start."));
+document.addEventListener("DOMContentLoaded", () => console.log("DOM content loaded."));
 
 serviceWorkerRegistration.register();
 

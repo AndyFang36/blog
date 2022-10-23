@@ -5,12 +5,15 @@ import {HomePage, TechnologyPage, LifePage, GalleryPage, AboutPage} from "../pag
 import {ReadingPage} from "../pages/reading/ReadingPage";
 import {UtilityPage} from "../pages/utils/UtilityPage";
 import {LoadingPage} from "../pages/LoadingPage";
-import Error from "../errors/Error";
+import ErrorPage from "../errors/ErrorPage";
 
 export const Main = () => {
-  useEffect(()=>console.log("Main loaded."))
+  useEffect(() => {
+    console.log(`load main`);
+  }, []);
+
   return (
-    <Box component="main" id="MainContainer">
+    <Box id="Main" component="main">
       <Suspense fallback={<LoadingPage/>}>
         <Routes>
           <Route path="/blog/*" element={<Outlet/>}>
@@ -21,7 +24,7 @@ export const Main = () => {
             <Route path="reading" element={<ReadingPage/>}/>
             <Route path="gallery" element={<GalleryPage/>}/>
             <Route path="about" element={<AboutPage/>}/>
-            <Route path="*" element={<Error type="NOT_FOUND"/>}/>
+            <Route path="*" element={<ErrorPage type="NOT_FOUND"/>}/>
           </Route>
         </Routes>
       </Suspense>
